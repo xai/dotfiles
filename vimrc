@@ -163,5 +163,11 @@ autocmd FileType c,cpp nnoremap <leader>g :YcmCompleter GoTo<CR>
 autocmd FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 autocmd FileType c,cpp nnoremap <leader>c :YcmCompleter GoToDeclaration<CR>
 
+" Fugitive
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :Gblame<CR>
+
 " thesaurus
 nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
