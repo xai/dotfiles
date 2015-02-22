@@ -153,6 +153,7 @@ nnoremap <Leader>p :CtrlP<CR>
 autocmd FileType java nnoremap <Leader>g :JavaSearchContext<CR>
 autocmd FileType java nnoremap <Leader>c :JavaCallHierarchy<CR>
 autocmd FileType java nnoremap <Leader>j :JavaDocComment<CR>
+autocmd FileType java nnoremap <Leader>i :JavaImportOrganize<CR>
 
 " file tree style
 let g:netrw_liststyle=3
