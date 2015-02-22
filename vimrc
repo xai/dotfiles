@@ -21,17 +21,16 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/Align'
-Plugin 'mikewest/vimroom'
-Plugin 'inside/vim-search-pulse'
 Plugin 'vim-scripts/vimwiki'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'itchyny/thumbnail.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'szw/vim-dict'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/unite.vim'
 
 filetype plugin indent on
 
@@ -144,10 +143,17 @@ function! <SID>Snip() range
 endfunction
 com! -nargs=0 -range Snip :<line1>,<line2>call <SID>Snip()
 
-" CtrlP
+" define leader key
 let mapleader = " "
+
+" CtrlP
 nnoremap <Leader>l :CtrlPMRU<CR>
 nnoremap <Leader>p :CtrlP<CR>
+
+" Unite
+nnoremap <Leader>ur :Unite file_rec<CR>
+nnoremap <Leader>uf :Unite file<CR>
+nnoremap <Leader>ub :Unite buffer<CR>
 
 " eclim
 autocmd FileType java nnoremap <Leader>g :JavaSearchContext<CR>
@@ -157,7 +163,7 @@ autocmd FileType java nnoremap <Leader>i :JavaImportOrganize<CR>
 
 " file tree style
 let g:netrw_liststyle=3
-map <leader>k :Explore<cr>
+map <leader>k :VimFiler<cr>
 
 " YCM
 autocmd FileType c,cpp nnoremap <leader>g :YcmCompleter GoTo<CR>
