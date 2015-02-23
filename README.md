@@ -10,5 +10,5 @@ Note that I don't use powerline and that the installation of powerline itself is
 ### Installation
 1. `cp /path/to/dotfiles/vimrc $HOME/.vimrc`
 2. `mkdir -p $HOME/.vim/bundle`
-3. `git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Bundle.vim`
+3. `git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim`
 4. `vim -c PluginInstall`
