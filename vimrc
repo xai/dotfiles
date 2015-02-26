@@ -12,6 +12,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 filetype off
 call vundle#rc()
 
+Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/Lucius'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
