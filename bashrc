@@ -104,6 +104,7 @@ fi
 export EDITOR=/usr/bin/vim
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
 export ECLIPSE_HOME=/opt/eclipse
+export GRADLE_HOME=/opt/gradle
 export NNTPSERVER='news.gmane.org'
 
 # enable programmable completion features (you don't need to enable
