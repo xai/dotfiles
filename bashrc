@@ -123,6 +123,9 @@ if [ "$COLORTERM" == "gnome-terminal" ] ; then
 fi
 
 # PATH
+if [ -d /opt/gradle/bin ]; then
+	export PATH=/opt/gradle/bin:$PATH
+fi
 if [ -d $HOME/bin ]; then
 	export PATH=$HOME/bin:$PATH
 fi
