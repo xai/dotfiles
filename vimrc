@@ -35,11 +35,9 @@ Plugin 'Shougo/unite.vim'
 
 filetype plugin indent on
 
-colorscheme lucius
-"LuciusWhite
-LuciusBlack
+colorscheme solarized
 
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 
 set autoindent
 set smartindent
