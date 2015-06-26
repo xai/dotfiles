@@ -1,0 +1,4 @@
+term screen-256color
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{= dd}%-Lw%{+b}%50>%n%f* %t%{-}%+Lw%<"
