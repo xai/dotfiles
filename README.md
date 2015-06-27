@@ -14,4 +14,4 @@ Note that I don't use powerline and that the installation of powerline itself is
 4. `vim -c PluginInstall`
 
 ## Xresources
-Use https://github.com/xai/Xresources.edit to generate $HOME/.Xresources using $HOME/Xresources.src.
+Use https://github.com/xai/Xresources.edit to generate `$HOME/.Xresources` using `$HOME/Xresources.src`.
