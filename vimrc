@@ -32,6 +32,8 @@ Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'szw/vim-dict'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/unite.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tfnico/vim-gradle'
 
 filetype plugin indent on
 
@@ -39,10 +41,13 @@ colorscheme solarized
 
 "let g:solarized_termcolors=256
 
+" indenation
 set autoindent
 set smartindent
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+
 set showmatch
 set incsearch
 set history=10000
@@ -118,6 +123,9 @@ let g:tex_flavor='latex'
 "let g:vim_search_pulse_mode = 'cursor_line'
 let g:vim_search_pulse_mode = 'pattern'
 let g:vim_search_pulse_disable = 0
+
+" Disable indent visualization by default
+let g:indentLine_enabled = 0
 
 " insert scissor lines above and below text
 function! <SID>Snip() range
