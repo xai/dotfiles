@@ -177,6 +177,10 @@ autocmd FileType c,cpp nnoremap <leader>g :YcmCompleter GoTo<CR>
 autocmd FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 autocmd FileType c,cpp nnoremap <leader>c :YcmCompleter GoToDeclaration<CR>
 
+" clang-format
+map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
+imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
+
 " Fugitive
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit -s<CR>
