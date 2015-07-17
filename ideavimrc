@@ -2,3 +2,6 @@ let mapleader = " "
 nnoremap <Leader>l :action RecentFiles<CR>
 nnoremap <Leader>p :action GotoFile<CR>
 nnoremap <Leader>k :action FileStructurePopup<CR>
+
+nnoremap <Leader>g :action GotoDeclaration<CR>
+nnoremap <Leader>i :action OptimizeImports<CR>
