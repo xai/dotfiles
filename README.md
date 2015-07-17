@@ -7,6 +7,9 @@ See the [official powerline documentation](https://powerline.readthedocs.org/en/
 Note that I don't use powerline and that the installation of powerline itself is not necessary for my configs. I just use the fonts.
 
 ## vimrc
+
+I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot. Therefore, you can safely assume that my vimrc plays well with neovim.
+
 ### Installation
 1. `cp /path/to/dotfiles/vimrc $HOME/.vimrc`
 2. `mkdir -p $HOME/.vim/bundle`
