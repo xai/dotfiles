@@ -187,6 +187,9 @@ nnoremap <leader>gc :Gcommit -s<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 
+" really cool gui for git (incl. interactive staging)
+nnoremap <leader>gg :!git-cola &<CR>
+
 " thesaurus
 nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
 
