@@ -186,6 +186,7 @@ nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit -s<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gp :Gpush<CR>
 
 " really cool gui for git (incl. interactive staging)
 nnoremap <leader>gg :!git-cola &<CR>
