@@ -47,13 +47,14 @@ set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+autocmd FileType java set expandtab
 
 set showmatch
 set incsearch
 set history=10000
 "autocmd FileType java,c,php,python,perl,bash set colorcolumn=80
-autocmd FileType c,php,python,perl,bash let &colorcolumn="80,".join(range(120,999),",")
-autocmd FileType java let &colorcolumn="100,".join(range(120,999),",")
+autocmd FileType c,php,perl,bash let &colorcolumn="80,".join(range(120,999),",")
+autocmd FileType java,python let &colorcolumn="100,".join(range(120,999),",")
 autocmd FileType tex set modeline
 "autocmd FileType tex match ErrorMsg '\%>86v.\+'
 "autocmd FileType tex highlight ExtraWhitespace ctermbg=red guibg=red
