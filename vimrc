@@ -34,6 +34,7 @@ Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tfnico/vim-gradle'
+Plugin 'vim-scripts/git_patch_tags.vim'
 
 filetype plugin indent on
 
