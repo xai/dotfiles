@@ -6,6 +6,8 @@ Some of the things I use need the powerline fonts.
 See the [official powerline documentation](https://powerline.readthedocs.org/en/master/installation.html#patched-fonts) for patching or [powerline-fonts](https://github.com/powerline/fonts) for using prepatched versions.  
 Note that I don't use powerline and that the installation of powerline itself is not necessary for my configs. I just use the fonts.
 
+My tmux config requires `xclip` to be installed.
+
 ## vimrc
 
 I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot. Therefore, you can safely assume that my vimrc plays well with neovim.
@@ -18,3 +20,8 @@ I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot
 
 ## Xresources
 Use https://github.com/xai/Xresources.edit to generate `$HOME/.Xresources` using `$HOME/Xresources.src`.
+
+## tmux
+Tmux plugin manager is needed, so you have to clone it first:
+
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
