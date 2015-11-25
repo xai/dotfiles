@@ -147,3 +147,5 @@ if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   source ~/.bash-git-prompt/gitprompt.sh
 fi
 
+# fuzzy search for bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
