@@ -48,7 +48,7 @@ set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-autocmd FileType java set expandtab
+autocmd FileType java,c,cpp set expandtab
 
 set showmatch
 set incsearch
