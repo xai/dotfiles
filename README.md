@@ -8,6 +8,12 @@ Note that I don't use powerline and that the installation of powerline itself is
 
 My tmux config requires `xclip` to be installed.
 
+## bashrc
+
+Optionally, you might want to install the following optional pieces:
+* [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt): enable git prompt when in repo dir
+* [fzf](https://github.com/junegunn/fzf): fuzzy search
+
 ## vimrc
 
 I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot. Therefore, you can safely assume that my vimrc plays well with neovim.
