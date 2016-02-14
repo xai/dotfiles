@@ -159,10 +159,9 @@ function certchain() {
         | grep -E '\ (s|i):'
 }
 
-function trytmux() {
+function mux() {
 	tmux a -t $1 || tmux new -s $1
 }
-alias mux='trytmux'
 
 export DARK=true
 
