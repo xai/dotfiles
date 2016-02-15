@@ -14,7 +14,8 @@ call vundle#rc()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/Lucius'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/syntastic'
@@ -65,6 +66,7 @@ autocmd FileType tex set modeline
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
+"let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#eclim#enabled = 1
@@ -113,7 +115,7 @@ highlight MyTodo ctermbg=green guibg=green
 highlight MyWarnings ctermfg=red guifg=darkred
 call matchadd('MyTodo', '/TODO\|Todo\|todo/')
 call matchadd('MyFixme', '/FIXME\|Fixme\|fixme/')
-call matchadd('MyWarnings', '\%>86v.\+')
+"call matchadd('MyWarnings', '\%>86v.\+')
 call matchadd('MyFixme', '\s\+$')
 
 " Always start on first line of git commit message
