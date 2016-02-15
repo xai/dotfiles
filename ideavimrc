@@ -3,7 +3,8 @@ nnoremap <Leader>l :action RecentFiles<CR>
 nnoremap <Leader>p :action GotoFile<CR>
 nnoremap <Leader>k :action FileStructurePopup<CR>
 
-nnoremap <Leader>g :action GotoDeclaration<CR>
+nnoremap <Leader>gD :action GotoDeclaration<CR>
+nnoremap <Leader>gS :action GotoSymbol<CR>
 nnoremap <Leader>i :action OptimizeImports<CR>
 nnoremap <Leader>c :action CommentByLineComment<CR>
 nnoremap <Leader>q :action QuickJavaDoc<CR>
