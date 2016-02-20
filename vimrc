@@ -37,6 +37,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tfnico/vim-gradle'
 Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'junegunn/fzf'
+Plugin 'vim-scripts/vim-auto-save'
 
 filetype plugin indent on
 
