@@ -38,6 +38,8 @@ Plugin 'tfnico/vim-gradle'
 Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'junegunn/fzf'
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
 
 filetype plugin indent on
 
@@ -53,12 +55,20 @@ set softtabstop=4
 set shiftwidth=4
 autocmd FileType java,c,cpp set expandtab
 
+" PEP8 compliant indenting
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+
+" Save buffer automatically
+" autocmd FileType java,python let auto_save = 1
+
+let python_highlight_all=1
+
 set showmatch
 set incsearch
 set history=10000
 "autocmd FileType java,c,php,python,perl,bash set colorcolumn=80
-autocmd FileType c,php,perl,bash let &colorcolumn="80,".join(range(120,999),",")
-autocmd FileType java,python let &colorcolumn="100,".join(range(120,999),",")
+autocmd FileType c,php,perl,bash,python let &colorcolumn="80,".join(range(120,999),",")
+autocmd FileType java let &colorcolumn="100,".join(range(120,999),",")
 autocmd FileType tex set modeline
 "autocmd FileType tex match ErrorMsg '\%>86v.\+'
 "autocmd FileType tex highlight ExtraWhitespace ctermbg=red guibg=red
