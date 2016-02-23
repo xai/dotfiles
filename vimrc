@@ -28,6 +28,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'scrooloose/nerdtree.git'
 Plugin 'itchyny/thumbnail.vim'
 Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'szw/vim-dict'
@@ -187,6 +188,9 @@ autocmd FileType java nnoremap <Leader>i :JavaImportOrganize<CR>
 " file tree style
 let g:netrw_liststyle=3
 map <leader>k :VimFiler<cr>
+
+" NERDtree
+map <leader>n :NERDTreeToggle<CR>
 
 " YCM
 autocmd FileType c,cpp nnoremap <leader>g :YcmCompleter GoTo<CR>
