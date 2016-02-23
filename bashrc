@@ -160,7 +160,11 @@ function certchain() {
 }
 
 function mux() {
-	tmux a -t $1 || tmux new -s $1
+	if [ -z "$1" ]; then
+		tmux a || tmux
+	else
+		tmux a -t $1 || tmux new -s $1
+	fi
 }
 
 export DARK=true
