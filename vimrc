@@ -41,6 +41,7 @@ Plugin 'junegunn/fzf'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
+Plugin 'artur-shaik/vim-javacomplete2'
 
 filetype plugin indent on
 
@@ -77,6 +78,9 @@ autocmd FileType tex set modeline
 
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
+
+" Enable omnifunc completion for java
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
