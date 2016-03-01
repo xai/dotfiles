@@ -2,6 +2,7 @@
 Just my dotfiles... Don't blame me when they break your stuff.
 
 ## Requirements
+
 Some of the things I use need the powerline fonts.  
 See the [official powerline documentation](https://powerline.readthedocs.org/en/master/installation.html#patched-fonts) for patching or [powerline-fonts](https://github.com/powerline/fonts) for using prepatched versions.  
 Note that I don't use powerline and that the installation of powerline itself is not necessary for my configs. I just use the fonts.
@@ -25,9 +26,28 @@ I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot
 4. `vim -c PluginInstall`
 
 ## Xresources
+
 Use https://github.com/xai/Xresources.edit to generate `$HOME/.Xresources` using `$HOME/Xresources.src`.
 
 ## tmux
+
 Tmux plugin manager is needed, so you have to clone it first:
 
 `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+
+## gnome-shell
+
+I typically use 12 static workspaces with those keybindings:
+
+`Ctrl-Fx`: Switch to workspace x
+
+`Super-Fx`: Move current window to workspace x
+
+These can be easily setup via gsettings:
+
+`$ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Primary>F$i']"; done`
+
+`$ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super>F$i']"; done`
+
+To spawn a terminal emulator fast, I bind `urxvt` to `Super-Return`.
+
