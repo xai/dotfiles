@@ -45,9 +45,13 @@ I typically use 12 static workspaces with those keybindings:
 
 These can be easily setup via gsettings:
 
-`$ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Primary>F$i']"; done`
+```
+$ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Primary>F$i']"; done
+```
 
-`$ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super>F$i']"; done`
+```
+$ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super>F$i']"; done
+```
 
 To spawn a terminal emulator fast, I bind `urxvt` to `Super-Return`.
 
