@@ -55,3 +55,10 @@ $ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings move-t
 
 To spawn a terminal emulator fast, I bind `urxvt` to `Super-Return`.
 
+**Extensions**
+
+I need some extensions to be productive with gnome-shell:
+* [no topleft hot corner](https://extensions.gnome.org/extension/118/no-topleft-hot-corner/)
+* [pixel saver](https://extensions.gnome.org/extension/723/pixel-saver/)
+* [workspace indicator](https://extensions.gnome.org/extension/21/workspace-indicator/)
+* [topicons](https://extensions.gnome.org/extension/1031/topicons/)
