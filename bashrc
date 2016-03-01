@@ -104,7 +104,7 @@ fi
 
 export EDITOR=/usr/bin/vim
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
-export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-x64
+export JAVA_HOME=/usr/lib/jvm/oracle-jdk-bin-1.8
 export ECLIPSE_HOME=/opt/eclipse
 export GRADLE_HOME=/opt/gradle
 export NNTPSERVER='news.gmane.org'
