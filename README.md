@@ -25,9 +25,25 @@ I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot
 3. `git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim`
 4. `vim -c PluginInstall`
 
-To use the R-Plugin, you also need to install the R-package vimcom. The easiest way to do this is using the `devtools` package:
+To use the R-Plugin, you also need to install the R-package vimcom.
+Our version of the vim R-plugin requires using a released version here as well, so you need to checkout a release tag from the repository:
 
-`devtools::install_github("jalvesaq/VimCom")`
+```
+git clone https://github.com/jalvesaq/VimCom
+git checkout v1.2-7
+```
+
+Now you can install the R-package:
+
+`install.packages("path/to/VimCom", type = "source", repos = NULL)`
+
+Finally you need to add the following piece to your `$HOME/R.profile`:
+```
+if (interactive()){
+	options(vimcom.verbose = 1)
+	library(vimcom)
+}
+```
 
 ## Xresources
 
