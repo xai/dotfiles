@@ -25,6 +25,10 @@ I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot
 3. `git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim`
 4. `vim -c PluginInstall`
 
+To use the R-Plugin, you also need to install the R-package vimcom. The easiest way to do this is using the `devtools` package:
+
+`devtools::install_github("jalvesaq/VimCom")`
+
 ## Xresources
 
 Use https://github.com/xai/Xresources.edit to generate `$HOME/.Xresources` using `$HOME/Xresources.src`.

@@ -42,6 +42,7 @@ Plugin 'vim-scripts/vim-auto-save'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'vim-scripts/Vim-R-plugin'
 
 filetype plugin indent on
 
