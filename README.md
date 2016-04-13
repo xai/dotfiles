@@ -35,6 +35,8 @@ Tmux plugin manager is needed, so you have to clone it first:
 
 `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
+Then reload `.tmux.conf` and press `PREFIX-I` to install the plugins.
+
 ## gnome-shell
 
 I typically use 12 static workspaces with those keybindings:
