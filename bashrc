@@ -50,7 +50,7 @@ if [ "$color_prompt" = yes ]; then
 	# cyan
 	# PS1="\[\e[00;36m\]\h \[\e[0m\]\w \[\e[00;36m\]\\$\[\e[0m\] "
 	# PS1="\[\e[01;36m\]\h \[\e[0m\]\w \[\e[01;36m\]\\$\[\e[0m\] "
-	PS1="\[\e[0m\]\h \[\e[00;36m\]\w \[\e[0m\]\\$ "
+	PS1=" \[\e[00;36m\]\w \[\e[0m\]\\$ "
 
 	# blue
 	# PS1="\[\e[00;34m\]\h \[\e[0m\]\w \[\e[00;34m\]\\$\[\e[0m\] "
@@ -167,12 +167,12 @@ function mux() {
 	fi
 }
 
-export DARK=true
+export DARK=false
 
 # extra information in git repositories
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
-  GIT_PROMPT_THEME=Solarized
+#  GIT_PROMPT_THEME=Solarized
   source ~/.bash-git-prompt/gitprompt.sh
 fi
 
