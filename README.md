@@ -7,8 +7,6 @@ Some of the things I use need the powerline fonts.
 See the [official powerline documentation](https://powerline.readthedocs.org/en/master/installation.html#patched-fonts) for patching or [powerline-fonts](https://github.com/powerline/fonts) for using prepatched versions.  
 Note that I don't use powerline and that the installation of powerline itself is not necessary for my configs. I just use the fonts.
 
-My tmux config requires `xclip` to be installed.
-
 ## bashrc
 
 Optionally, you might want to install the following optional pieces:
