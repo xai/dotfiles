@@ -46,28 +46,37 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# set host variable if the shell is controlled from ssh
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	if [ "$color_prompt" = yes ]; then
+		host="@\e[5;33;40m\]\h\[\033[00m\]"
+	else
+		host="@\h"
+	fi
+fi
+
 if [ "$color_prompt" = yes ]; then
 	# cyan
-	# PS1="\[\e[00;36m\]\h \[\e[0m\]\w \[\e[00;36m\]\\$\[\e[0m\] "
-	# PS1="\[\e[01;36m\]\h \[\e[0m\]\w \[\e[01;36m\]\\$\[\e[0m\] "
-	PS1="\[\e[0m\]\h \[\e[00;36m\]\w \[\e[0m\]\\$ "
+	# PS1="\[\e[00;36m\]${host} \[\e[0m\]\w \[\e[00;36m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;36m\]${host} \[\e[0m\]\w \[\e[01;36m\]\\$\[\e[0m\] "
+	PS1="\[\e[0m\]${host} \[\e[00;36m\]\w \[\e[0m\]\\$ "
 
 	# blue
-	# PS1="\[\e[00;34m\]\h \[\e[0m\]\w \[\e[00;34m\]\\$\[\e[0m\] "
-	# PS1="\[\e[01;34m\]\h \[\e[0m\]\w \[\e[01;34m\]\\$\[\e[0m\] "
-	# PS1="\[\e[0m\]\h \[\e[00;34m\]\w \[\e[0m\]\\$ "
+	# PS1="\[\e[00;34m\]${host} \[\e[0m\]\w \[\e[00;34m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;34m\]${host} \[\e[0m\]\w \[\e[01;34m\]\\$\[\e[0m\] "
+	# PS1="\[\e[0m\]${host} \[\e[00;34m\]\w \[\e[0m\]\\$ "
 
 	# green
-	# PS1="\[\e[00;32m\]\h \[\e[0m\]\w \[\e[00;32m\]\\$\[\e[0m\] "
-	# PS1="\[\e[01;32m\]\h \[\e[0m\]\w \[\e[01;32m\]\\$\[\e[0m\] "
-	# PS1="\[\e[0m\]\h \[\e[00;32m\]\w \[\e[0m\]\\$ "
+	# PS1="\[\e[00;32m\]${host} \[\e[0m\]\w \[\e[00;32m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;32m\]${host} \[\e[0m\]\w \[\e[01;32m\]\\$\[\e[0m\] "
+	# PS1="\[\e[0m\]${host} \[\e[00;32m\]\w \[\e[0m\]\\$ "
 
 	# yellow
-	# PS1="\[\e[00;33m\]\h \[\e[0m\]\w \[\e[00;33m\]\\$\[\e[0m\] "
-	# PS1="\[\e[01;33m\]\h \[\e[0m\]\w \[\e[01;33m\]\\$\[\e[0m\] "
-	# PS1="\[\e[0m\]\h \[\e[00;33m\]\w \[\e[0m\]\\$ "
+	# PS1="\[\e[00;33m\]${host} \[\e[0m\]\w \[\e[00;33m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;33m\]${host} \[\e[0m\]\w \[\e[01;33m\]\\$\[\e[0m\] "
+	# PS1="\[\e[0m\]${host} \[\e[00;33m\]\w \[\e[0m\]\\$ "
 else
-    PS1='\h \w \$ '
+    PS1='${host} \w \$ '
 fi
 unset color_prompt force_color_prompt
 
