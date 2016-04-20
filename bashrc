@@ -176,12 +176,12 @@ function mux() {
 	fi
 }
 
-export DARK=true
+export DARK=false
 
 # extra information in git repositories
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
-  GIT_PROMPT_THEME=Solarized
+#  GIT_PROMPT_THEME=Solarized
   source ~/.bash-git-prompt/gitprompt.sh
 fi
 

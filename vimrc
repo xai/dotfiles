@@ -1,7 +1,7 @@
 set nocompatible
 
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 
 syntax on
 set number
@@ -19,7 +19,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/Align'
@@ -46,7 +46,8 @@ Plugin 'jalvesaq/Nvim-R'
 
 filetype plugin indent on
 
-colorscheme solarized
+colorscheme lucius
+LuciusWhite
 
 "let g:solarized_termcolors=256
 
