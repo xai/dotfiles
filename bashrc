@@ -112,7 +112,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-export EDITOR=/usr/bin/vim
+export EDITOR=vi
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
 export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-x64
 export ECLIPSE_HOME=/opt/eclipse
