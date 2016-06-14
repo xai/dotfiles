@@ -1,0 +1,26 @@
+.header-bar {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	font-size: 9px;
+}
+
+.header-bar .button {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+TerminalWindow .notebook {
+	border: 0;
+	padding: 0;
+	color: #eee;
+	background-color: shade(@active-grey, 1);
+}
+
+TerminalWindow .notebook tab:active {
+	background-color: shade(@active, 1);
+}
+
+TerminalWindow .notebook tab {
+	border-radius: 0px;
+	background-color: shade(@bg-grey, 1);
+}

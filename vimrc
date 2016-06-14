@@ -43,6 +43,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'jalvesaq/Nvim-R'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 filetype plugin indent on
 
