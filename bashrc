@@ -112,23 +112,15 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-export EDITOR=vi
+export EDITOR=vim
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
-export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-x64
+export JAVA_HOME=/usr/local/openjdk8
 export ECLIPSE_HOME=/opt/eclipse
-export GRADLE_HOME=/opt/gradle
+export GRADLE_HOME=$HOME/.gradle
 export NNTPSERVER='news.gmane.org'
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+	        source /usr/local/share/bash-completion/bash_completion.sh
 
 if [ "$COLORTERM" == "gnome-terminal" ] ; then
 	TERM=xterm-256color
