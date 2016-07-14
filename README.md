@@ -55,6 +55,8 @@ $ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings move-t
 
 To spawn a terminal emulator fast, I bind `urxvt` to `Super-Return`.
 
+Tabs and titlebars take lots of space by default, so I tweaked my `$HOME/.config/gtk-3.0/gtk.css`.
+
 **Extensions**
 
 I need some extensions to be productive with gnome-shell:

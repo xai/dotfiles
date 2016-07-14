@@ -43,6 +43,8 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'jalvesaq/Nvim-R'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 filetype plugin indent on
 
@@ -212,6 +214,10 @@ nnoremap <leader>gc :Gcommit -s<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gp :Gpush<CR>
+
+" Syntastic
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lp :lprevious<CR>
 
 " really cool gui for git (incl. interactive staging)
 nnoremap <leader>gg :!git-cola &<CR>
