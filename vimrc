@@ -44,6 +44,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 filetype plugin indent on
 
