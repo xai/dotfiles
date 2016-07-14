@@ -22,6 +22,10 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+if [ "$COLORTERM" == "gnome-terminal" ] ; then
+	TERM=xterm-256color
+fi
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -41,6 +45,7 @@ if [ -n "$force_color_prompt" ]; then
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
+	CLICOLOR=yes
     else
 	color_prompt=
     fi
@@ -122,10 +127,6 @@ export NNTPSERVER='news.gmane.org'
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
 	        source /usr/local/share/bash-completion/bash_completion.sh
 
-if [ "$COLORTERM" == "gnome-terminal" ] ; then
-	TERM=xterm-256color
-fi
-
 # PATH
 if [ -d /opt/gradle/bin ]; then
 	export PATH=/opt/gradle/bin:$PATH
@@ -168,6 +169,8 @@ function mux() {
 		tmux a -t $1 || tmux new -s $1
 	fi
 }
+
+PAGER=less
 
 export DARK=true
 
