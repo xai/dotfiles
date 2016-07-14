@@ -85,9 +85,9 @@ au BufNewFile,BufRead *.gradle set filetype=groovy
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "let g:airline_theme='powerlineish'
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#eclim#enabled = 1
+"let g:airline#extensions#eclim#enabled = 1
 set laststatus=2
 set t_Co=256
 
