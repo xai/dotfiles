@@ -212,6 +212,8 @@ imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit -s<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gD :Git diff --cached<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gp :Gpush<CR>
 

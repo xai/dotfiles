@@ -28,6 +28,7 @@ case "$TERM" in
     xterm-256color) color_prompt=yes;;
     screen-256color) color_prompt=yes;;
     rxvt-unicode-256color) color_prompt=yes;;
+    st-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
