@@ -50,7 +50,7 @@ fi
 # set host variable if the shell is controlled from ssh
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	if [ "$color_prompt" = yes ]; then
-		host="@\e[5;33;33m\]\h\[\033[00m\]"
+		host="@\e[33;33m\]\h\[\033[00m\]"
 	else
 		host="@\h"
 	fi
