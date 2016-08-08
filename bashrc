@@ -175,6 +175,9 @@ PAGER=less
 
 export DARK=true
 
+# git bash completion
+source /usr/local/share/git-core/contrib/completion/git-completion.bash
+
 # extra information in git repositories
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
