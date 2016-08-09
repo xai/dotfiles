@@ -16,6 +16,7 @@ call vundle#rc()
 " Features
 "
 Plugin 'gmarik/Vundle.vim'
+Plugin 'aperezdc/vim-template'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'itchyny/thumbnail.vim'
@@ -58,6 +59,10 @@ filetype plugin indent on
 colorscheme solarized
 
 "let g:solarized_termcolors=256
+
+" Setup for vim-template
+let g:username='Olaf Lessenich'
+let g:email='xai@linux.com'
 
 " indenation
 set autoindent
