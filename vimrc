@@ -114,6 +114,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 let g:ycm_confirm_extra_conf = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_autoclose_preview_window_after_completion=1
 set tags+=./.tags
 
 " Syntastic
@@ -212,7 +213,7 @@ map <leader>k :VimFiler<cr>
 map <leader>n :NERDTreeToggle<CR>
 
 " YCM
-autocmd FileType c,cpp nnoremap <leader>g :YcmCompleter GoTo<CR>
+autocmd FileType c,cpp,python nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 autocmd FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 autocmd FileType c,cpp nnoremap <leader>c :YcmCompleter GoToDeclaration<CR>
 
@@ -229,12 +230,15 @@ nnoremap <leader>gD :Git diff --cached<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gp :Gpush<CR>
 
+" really cool gui for git (incl. interactive staging)
+nnoremap <leader>gg :!git-cola &<CR>
+
+" solarized
+call togglebg#map("<F6>")
+
 " Syntastic
 nnoremap <leader>ln :lnext<CR>
 nnoremap <leader>lp :lprevious<CR>
-
-" really cool gui for git (incl. interactive staging)
-nnoremap <leader>gg :!git-cola &<CR>
 
 " thesaurus
 nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
