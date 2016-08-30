@@ -27,6 +27,15 @@ I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot
 
 Use https://github.com/xai/Xresources.edit to generate `$HOME/.Xresources` using `$HOME/Xresources.src`.
 
+## urxvt
+
+I use tabbedex because I want named tabs.
+```
+git clone https://github.com/mina86/urxvt-tabbedex ~/.urxvt/tabbedex
+cd ~/.urxvt/tabbedex
+make install-local-symlink
+```
+
 ## tmux
 
 Tmux plugin manager is needed, so you have to clone it first:
