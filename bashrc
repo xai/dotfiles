@@ -171,7 +171,14 @@ function mux() {
 	fi
 }
 
-PAGER=less
+fixssh() {
+	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+		if (tmux show-environment | grep "^${key}" > /dev/null); then
+			value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+			export ${key}="${value}"
+		fi
+	done
+}
 
 export DARK=true
 
@@ -188,3 +195,6 @@ fi
 
 # fuzzy search for bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Use less as pager
+PAGER=less
