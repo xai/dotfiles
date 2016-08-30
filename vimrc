@@ -236,6 +236,7 @@ nnoremap <leader>gg :!git-cola &<CR>
 
 " solarized
 call togglebg#map("<F6>")
+let g:solarized_diffmode="high"
 
 " Syntastic
 nnoremap <leader>ln :lnext<CR>
