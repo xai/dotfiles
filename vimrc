@@ -30,13 +30,12 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
-Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
@@ -44,8 +43,11 @@ Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Yggdroot/indentLine'
 "Plugin 'junegunn/fzf'
+"Plugin 'neomake/neomake'
+"Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vim-auto-save'
 "Plugin 'vim-scripts/vimwiki'
+"Plugin 'Valloric/YouCompleteMe'
 
 "
 " Colorschemes
@@ -71,7 +73,7 @@ set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-autocmd FileType java,c,cpp set expandtab
+autocmd FileType java,c,cpp,groovy set expandtab
 
 " PEP8 compliant indenting
 au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
@@ -95,9 +97,6 @@ autocmd FileType tex set modeline
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
-" Enable omnifunc completion for java
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 "let g:airline_theme='powerlineish'
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -109,14 +108,17 @@ let g:EclimProjectTreeAutoOpen=1
 let g:EclimJavaSearchSingleResult='tabnew'
 
 " for YCM
-let g:EclimCompletionMethod = 'omnifunc'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_autoclose_preview_window_after_completion=1
-set tags+=./.tags
+"let g:EclimCompletionMethod = 'omnifunc'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+""Do not ask when starting vim
+"let g:ycm_confirm_extra_conf = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_autoclose_preview_window_after_completion=1
+"set tags+=./.tags
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " Syntastic
 let g:syntastic_error_symbol = '☢'
@@ -132,6 +134,8 @@ let g:syntastic_check_on_open = 1
 
 " configure checkers
 let g:syntastic_tex_checkers = ["chktex"]
+let g:syntastic_java_checkers=['javac']
+let g:syntastic_java_javac_config_file_enabled = 1
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -201,10 +205,13 @@ nnoremap <Leader>uf :Unite file<CR>
 nnoremap <Leader>ub :Unite buffer<CR>
 
 " eclim
-autocmd FileType java nnoremap <Leader>g :JavaSearchContext<CR>
-autocmd FileType java nnoremap <Leader>c :JavaCallHierarchy<CR>
-autocmd FileType java nnoremap <Leader>j :JavaDocComment<CR>
-autocmd FileType java nnoremap <Leader>i :JavaImportOrganize<CR>
+" autocmd FileType java nnoremap <Leader>g :JavaSearchContext<CR>
+" autocmd FileType java nnoremap <Leader>c :JavaCallHierarchy<CR>
+" autocmd FileType java nnoremap <Leader>j :JavaDocComment<CR>
+" autocmd FileType java nnoremap <Leader>i :JavaImportOrganize<CR>
+
+" JavaComplete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " file tree style
 let g:netrw_liststyle=3
