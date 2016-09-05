@@ -16,6 +16,7 @@ Optionally, you might want to install the following optional pieces:
 ## vimrc
 
 I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot. Therefore, you can safely assume that my vimrc plays well with neovim.
+Actually, some of the plugins might require neovim.
 
 ### Installation
 1. `cp /path/to/dotfiles/vimrc $HOME/.vimrc`
