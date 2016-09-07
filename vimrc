@@ -30,12 +30,12 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/deoplete.nvim'
 Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
@@ -44,10 +44,10 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Yggdroot/indentLine'
 "Plugin 'junegunn/fzf'
 "Plugin 'neomake/neomake'
+"Plugin 'Shougo/deoplete.nvim'
 "Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vim-auto-save'
 "Plugin 'vim-scripts/vimwiki'
-"Plugin 'Valloric/YouCompleteMe'
 
 "
 " Colorschemes
@@ -104,15 +104,14 @@ let g:airline#extensions#eclim#enabled = 1
 set laststatus=2
 set t_Co=256
 
-let g:EclimProjectTreeAutoOpen=1
-let g:EclimJavaSearchSingleResult='tabnew'
+"let g:EclimProjectTreeAutoOpen=1
+"let g:EclimJavaSearchSingleResult='tabnew'
 
 " for YCM
 "let g:EclimCompletionMethod = 'omnifunc'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 ""Do not ask when starting vim
 "let g:ycm_confirm_extra_conf = 0
-"let g:syntastic_always_populate_loc_list = 1
 "let g:ycm_collect_identifiers_from_tags_files = 1
 "let g:ycm_autoclose_preview_window_after_completion=1
 "set tags+=./.tags
@@ -121,6 +120,9 @@ let g:EclimJavaSearchSingleResult='tabnew'
 let g:deoplete#enable_at_startup = 1
 
 " Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_error_symbol = '☢'
 let g:syntastic_warning_symbol = '⚡'
 let g:syntastic_style_error_symbol = '☛'
@@ -131,6 +133,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
 
 " configure checkers
 let g:syntastic_tex_checkers = ["chktex"]
