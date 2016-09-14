@@ -29,7 +29,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
@@ -43,7 +43,7 @@ Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Yggdroot/indentLine'
 "Plugin 'junegunn/fzf'
-"Plugin 'neomake/neomake'
+Plugin 'neomake/neomake'
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vim-auto-save'
@@ -135,11 +135,17 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
-
 " configure checkers
 let g:syntastic_tex_checkers = ["chktex"]
-let g:syntastic_java_checkers=['javac']
+let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
+
+" neomake
+let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '⚡', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_open_list = 1
+autocmd! BufWritePost * Neomake
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
