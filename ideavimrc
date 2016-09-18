@@ -8,3 +8,6 @@ nnoremap <Leader>gS :action GotoSymbol<CR>
 nnoremap <Leader>i :action OptimizeImports<CR>
 nnoremap <Leader>c :action CommentByLineComment<CR>
 nnoremap <Leader>q :action QuickJavaDoc<CR>
+
+set number
+set relativenumber

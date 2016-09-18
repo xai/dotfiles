@@ -1,20 +1,20 @@
 #!/bin/bash
 
-if python -mplatform | grep -qPi "(Ubuntu|Debian)"; then
-	echo "INSTALLING DEPENDENCIES:"
-	for P in $(cat DEPENDENCIES); do
-		dpkg -s "$P" >/dev/null 2>&1 && {
-			echo -e "\t$P is already installed"
-		} || {
-			echo -e "\t$P will be installed"
-			echo -e "\tsudo apt-get install $P"
-			sudo apt-get install $P
-		}
-	done
-else
-	echo "Dependency check could not be performed."
-	echo "Continuing."
-fi
+#if python -mplatform | grep -qPi "(Ubuntu|Debian)"; then
+#	echo "INSTALLING DEPENDENCIES:"
+#	for P in $(cat DEPENDENCIES); do
+#		dpkg -s "$P" >/dev/null 2>&1 && {
+#			echo -e "\t$P is already installed"
+#		} || {
+#			echo -e "\t$P will be installed"
+#			echo -e "\tsudo apt-get install $P"
+#			sudo apt-get install $P
+#		}
+#	done
+#else
+#	echo "Dependency check could not be performed."
+#	echo "Continuing."
+#fi
 
 echo
 

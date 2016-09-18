@@ -12,37 +12,32 @@ set rtp+=~/.vim/bundle/Vundle.vim
 filetype off
 call vundle#rc()
 
+"
+" Features
+"
 Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-scripts/Lucius'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-dispatch'
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'majutsushi/tagbar'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/Align'
-Plugin 'vim-scripts/vimwiki'
+Plugin 'aperezdc/vim-template'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'itchyny/thumbnail.vim'
-Plugin 'beloglazov/vim-online-thesaurus'
-Plugin 'szw/vim-dict'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'tfnico/vim-gradle'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/git_patch_tags.vim'
-Plugin 'junegunn/fzf'
-Plugin 'vim-scripts/vim-auto-save'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'jalvesaq/Nvim-R'
+Plugin 'Yggdroot/indentLine'
+
+"
+" Colorschemes
+"
+Plugin 'vim-scripts/Lucius'
+Plugin 'tomasr/molokai'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
@@ -50,13 +45,17 @@ colorscheme solarized
 
 "let g:solarized_termcolors=256
 
+" Setup for vim-template
+let g:username='Olaf Lessenich'
+let g:email='xai@linux.com'
+
 " indenation
 set autoindent
 set smartindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-autocmd FileType java,c,cpp set expandtab
+autocmd FileType java,c,cpp,groovy set expandtab
 
 " PEP8 compliant indenting
 au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
@@ -80,9 +79,6 @@ autocmd FileType tex set modeline
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
-" Enable omnifunc completion for java
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 "let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -90,19 +86,25 @@ let g:airline#extensions#eclim#enabled = 1
 set laststatus=2
 set t_Co=256
 
-let g:EclimProjectTreeAutoOpen=1
-let g:EclimJavaSearchSingleResult='tabnew'
+"let g:EclimProjectTreeAutoOpen=1
+"let g:EclimJavaSearchSingleResult='tabnew'
 
 " for YCM
-let g:EclimCompletionMethod = 'omnifunc'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-set tags+=./.tags
+"let g:EclimCompletionMethod = 'omnifunc'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+""Do not ask when starting vim
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_autoclose_preview_window_after_completion=1
+"set tags+=./.tags
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_error_symbol = '☢'
 let g:syntastic_warning_symbol = '⚡'
 let g:syntastic_style_error_symbol = '☛'
@@ -113,9 +115,19 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 
 " configure checkers
 let g:syntastic_tex_checkers = ["chktex"]
+let g:syntastic_java_checkers = ['javac']
+let g:syntastic_java_javac_config_file_enabled = 1
+
+" neomake
+let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '⚡', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_open_list = 1
+" autocmd! BufWritePost * Neomake
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -185,10 +197,13 @@ nnoremap <Leader>uf :Unite file<CR>
 nnoremap <Leader>ub :Unite buffer<CR>
 
 " eclim
-autocmd FileType java nnoremap <Leader>g :JavaSearchContext<CR>
-autocmd FileType java nnoremap <Leader>c :JavaCallHierarchy<CR>
-autocmd FileType java nnoremap <Leader>j :JavaDocComment<CR>
-autocmd FileType java nnoremap <Leader>i :JavaImportOrganize<CR>
+" autocmd FileType java nnoremap <Leader>g :JavaSearchContext<CR>
+" autocmd FileType java nnoremap <Leader>c :JavaCallHierarchy<CR>
+" autocmd FileType java nnoremap <Leader>j :JavaDocComment<CR>
+" autocmd FileType java nnoremap <Leader>i :JavaImportOrganize<CR>
+
+" JavaComplete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " file tree style
 let g:netrw_liststyle=3
@@ -198,7 +213,7 @@ map <leader>k :VimFiler<cr>
 map <leader>n :NERDTreeToggle<CR>
 
 " YCM
-autocmd FileType c,cpp nnoremap <leader>g :YcmCompleter GoTo<CR>
+autocmd FileType c,cpp,python nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 autocmd FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 autocmd FileType c,cpp nnoremap <leader>c :YcmCompleter GoToDeclaration<CR>
 
@@ -210,11 +225,21 @@ imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gc :Gcommit -s<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gD :Git diff --cached<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gp :Gpush<CR>
 
 " really cool gui for git (incl. interactive staging)
 nnoremap <leader>gg :!git-cola &<CR>
+
+" solarized
+call togglebg#map("<F6>")
+let g:solarized_diffmode="high"
+
+" Syntastic
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lp :lprevious<CR>
 
 " thesaurus
 nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>

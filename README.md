@@ -16,6 +16,7 @@ Optionally, you might want to install the following optional pieces:
 ## vimrc
 
 I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot. Therefore, you can safely assume that my vimrc plays well with neovim.
+Actually, some of the plugins might require neovim.
 
 ### Installation
 1. `cp /path/to/dotfiles/vimrc $HOME/.vimrc`
@@ -26,6 +27,15 @@ I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot
 ## Xresources
 
 Use https://github.com/xai/Xresources.edit to generate `$HOME/.Xresources` using `$HOME/Xresources.src`.
+
+## urxvt
+
+I use tabbedex because I want named tabs.
+```
+git clone https://github.com/mina86/urxvt-tabbedex ~/.urxvt/tabbedex
+cd ~/.urxvt/tabbedex
+make install-local-symlink
+```
 
 ## tmux
 
@@ -54,6 +64,8 @@ $ for i in $(seq 1 12); do gsettings set org.gnome.desktop.wm.keybindings move-t
 ```
 
 To spawn a terminal emulator fast, I bind `urxvt` to `Super-Return`.
+
+Tabs and titlebars take lots of space by default, so I tweaked my `$HOME/.config/gtk-3.0/gtk.css`.
 
 **Extensions**
 

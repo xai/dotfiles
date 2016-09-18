@@ -1,0 +1,93 @@
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+URxvt*background:            S_base3
+URxvt*foreground:            S_base00
+URxvt*fadeColor:             S_base3
+URxvt*cursorColor:           S_base01
+URxvt*pointerColorBackground:S_base1
+URxvt*pointerColorForeground:S_base01
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+URxvt*color0:                S_base02
+URxvt*color8:                S_base03
+
+!! red dark/light
+URxvt*color1:                S_red
+URxvt*color9:                S_orange
+
+!! green dark/light
+URxvt*color2:                S_green
+URxvt*color10:               S_base01
+
+!! yellow dark/light
+URxvt*color3:                S_yellow
+URxvt*color11:               S_base00
+
+!! blue dark/light
+URxvt*color4:                S_blue
+URxvt*color12:               S_base0
+
+!! magenta dark/light
+URxvt*color5:                S_magenta
+URxvt*color13:               S_violet
+
+!! cyan dark/light
+URxvt*color6:                S_cyan
+URxvt*color14:               S_base1
+
+!! white dark/light
+URxvt*color7:                S_base2
+URxvt*color15:               S_base3
+
+!URxvt fonts:
+URxvt*font: xft:Fantasque Sans Mono:size=10, xft:terminus:size=10, xft:Dejavu Sans Mono:size=10, xft:Sans:size=10, xft:Fixed:size=10
+
+!URxvt extensions:
+URxvt.perl-ext-common: default,tabbedex
+URxvt.perl-ext: default,tabbedex
+
+!URxvt scrolling options and cursor style:
+URxvt*saveLines: 12000
+URxvt*scrollstyle:plain
+URxvt*scrollBar: false
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+!URxvt.internalBorder: 5
+
+!URxvt tabs settings:
+URxvt.tabbed*.autohide:  yes
+URxvt.tabbed*.title:  false
+URxvt.tabbed.tabbar-fg: -2
+URxvt.tabbed.tabbar-bg: -1
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: -1
+
+!URxvt tabbedex keybindings
+URxvt.keysym.Meta-Control-1: perl:tabbedex:goto_tab_1
+URxvt.keysym.Meta-Control-2: perl:tabbedex:goto_tab_2
+URxvt.keysym.Meta-Control-3: perl:tabbedex:goto_tab_3
+URxvt.keysym.Meta-Control-4: perl:tabbedex:goto_tab_4
+URxvt.keysym.Meta-Control-5: perl:tabbedex:goto_tab_5
+URxvt.keysym.Meta-Control-6: perl:tabbedex:goto_tab_6
+URxvt.keysym.Meta-Control-7: perl:tabbedex:goto_tab_7
+URxvt.keysym.Meta-Control-8: perl:tabbedex:goto_tab_8
+URxvt.keysym.Meta-Control-9: perl:tabbedex:goto_tab_9
+URxvt.keysym.Meta-Control-0: perl:tabbedex:goto_tab_10
+
+URxvt.iconFile: /usr/share/icons/gnome/256x256/apps/terminal.png
