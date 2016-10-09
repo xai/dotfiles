@@ -29,7 +29,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
@@ -43,7 +43,7 @@ Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Yggdroot/indentLine'
 "Plugin 'junegunn/fzf'
-Plugin 'neomake/neomake'
+"Plugin 'neomake/neomake'
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vim-auto-save'
@@ -145,7 +145,7 @@ let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '⚡', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_open_list = 1
-autocmd! BufWritePost * Neomake
+"autocmd! BufWritePost * Neomake
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -231,7 +231,7 @@ map <leader>k :VimFiler<cr>
 map <leader>n :NERDTreeToggle<CR>
 
 " YCM
-autocmd FileType c,cpp,python nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd FileType c,cpp,python nnoremap <leader>g :YcmCompleter GoTo<CR>
 autocmd FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 autocmd FileType c,cpp nnoremap <leader>c :YcmCompleter GoToDeclaration<CR>
 
@@ -240,13 +240,13 @@ map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
 imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
 
 " Fugitive
-nnoremap <leader>gw :Gwrite<CR>
-nnoremap <leader>gc :Gcommit -s<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gD :Git diff --cached<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>Gw :Gwrite<CR>
+nnoremap <leader>Gc :Gcommit -s<CR>
+nnoremap <leader>Gs :Gstatus<CR>
+nnoremap <leader>Gd :Gdiff<CR>
+nnoremap <leader>GD :Git diff --cached<CR>
+nnoremap <leader>Gb :Gblame<CR>
+nnoremap <leader>Gp :Gpush<CR>
 
 " really cool gui for git (incl. interactive staging)
 nnoremap <leader>gg :!git-cola &<CR>
