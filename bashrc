@@ -119,6 +119,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export EDITOR=vim
+export TERMINAL=urxvt
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
 export JAVA_HOME=/usr/local/openjdk8
 export ECLIPSE_HOME=/opt/eclipse
