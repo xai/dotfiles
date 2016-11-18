@@ -213,7 +213,7 @@ com! -nargs=0 -range Snip :<line1>,<line2>call <SID>Snip()
 let mapleader = " "
 
 " CtrlP
-nnoremap <Leader>l :CtrlPMRU<CR>
+nnoremap <Leader>r :CtrlPMRU<CR>
 nnoremap <Leader>p :CtrlP<CR>
 
 " Unite
