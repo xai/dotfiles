@@ -23,11 +23,7 @@ echo "LINKING CONFIG FILES:"
 for C in $(cat CONFIGS); do
 	TARGET="$HOME/.$C"
 
-	if [ -e $TARGET ]; then
-		echo -e "\t${TARGET} exists"
-	else
-		echo -e "\tln -sf $(realpath $C) $HOME/.$C"
-		ln -sf $(realpath $C) $HOME/.$C
-	fi
+	echo -e "\tln -sf $(realpath $C) $HOME/.$C"
+	ln -sf $(realpath $C) $HOME/.$C
 done
 

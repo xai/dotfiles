@@ -50,7 +50,7 @@ fi
 # set host variable if the shell is controlled from ssh
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	if [ "$color_prompt" = yes ]; then
-		host="@\e[33;33m\]\h\[\033[00m\]"
+		host="@\e[33;33m\h\[\033[00m\]"
 	else
 		host="@\h"
 	fi
@@ -113,7 +113,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-export EDITOR=vi
+export EDITOR=/usr/bin/vim
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
 export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-x64
 export ECLIPSE_HOME=/opt/eclipse
@@ -147,6 +147,10 @@ if [ -d $HOME/bin ]; then
 fi
 if [ -d $HOME/.local/bin ]; then
 	export PATH=$HOME/.local/bin:$PATH
+fi
+
+if [ -d $HOME/.gem/ruby/2.1.0/bin ]; then
+	export PATH=$HOME/.gem/ruby/2.1.0/bin:$PATH
 fi
 
 # useful functions

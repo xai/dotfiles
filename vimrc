@@ -82,7 +82,14 @@ au BufNewFile,BufRead *.gradle set filetype=groovy
 "let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#eclim#enabled = 1
+"let g:airline#extensions#eclim#enabled = 1
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 set laststatus=2
 set t_Co=256
 
@@ -127,7 +134,6 @@ let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '⚡', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_open_list = 1
-" autocmd! BufWritePost * Neomake
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -152,6 +158,13 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
 " LaTeX
 let g:tex_flavor='latex'
+" use --server SOMENAME to use async
+"let g:LatexBox_latexmk_async=1
+let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_viewer='evince'
+" The quickfix window is opened automatically if not empty but the cursor
+" stays in the current window.
+let g:LatexBox_quickfix=2
 
 " Pulse
 "let g:vim_search_pulse_mode = 'cursor_line'
@@ -188,7 +201,7 @@ com! -nargs=0 -range Snip :<line1>,<line2>call <SID>Snip()
 let mapleader = " "
 
 " CtrlP
-nnoremap <Leader>l :CtrlPMRU<CR>
+nnoremap <Leader>r :CtrlPMRU<CR>
 nnoremap <Leader>p :CtrlP<CR>
 
 " Unite
@@ -213,7 +226,7 @@ map <leader>k :VimFiler<cr>
 map <leader>n :NERDTreeToggle<CR>
 
 " YCM
-autocmd FileType c,cpp,python nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd FileType c,cpp,python nnoremap <leader>g :YcmCompleter GoTo<CR>
 autocmd FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 autocmd FileType c,cpp nnoremap <leader>c :YcmCompleter GoToDeclaration<CR>
 
@@ -222,13 +235,13 @@ map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
 imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
 
 " Fugitive
-nnoremap <leader>gw :Gwrite<CR>
-nnoremap <leader>gc :Gcommit -s<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gD :Git diff --cached<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>Gw :Gwrite<CR>
+nnoremap <leader>Gc :Gcommit -s<CR>
+nnoremap <leader>Gs :Gstatus<CR>
+nnoremap <leader>Gd :Gdiff<CR>
+nnoremap <leader>GD :Git diff --cached<CR>
+nnoremap <leader>Gb :Gblame<CR>
+nnoremap <leader>Gp :Gpush<CR>
 
 " really cool gui for git (incl. interactive staging)
 nnoremap <leader>gg :!git-cola &<CR>
@@ -249,3 +262,24 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-l> :wincmd l<CR>
+
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
