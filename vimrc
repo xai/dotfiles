@@ -59,7 +59,8 @@ Plugin 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
-colorscheme solarized
+"colorscheme solarized
+colorscheme lucius
 
 "let g:solarized_termcolors=256
 
@@ -178,7 +179,7 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 " LaTeX
 let g:tex_flavor='latex'
 " use --server SOMENAME to use async
-let g:LatexBox_latexmk_async=1
+"let g:LatexBox_latexmk_async=1
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_viewer='evince'
 " The quickfix window is opened automatically if not empty but the cursor
