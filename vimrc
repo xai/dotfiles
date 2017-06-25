@@ -1,8 +1,5 @@
 set nocompatible
 
-set background=dark
-"set background=light
-
 syntax on
 set number
 set enc=utf-8
@@ -59,7 +56,11 @@ Plugin 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
+set background=dark
+"set background=light
 colorscheme solarized
+"colorscheme lucius
+"LuciusWhite
 
 "let g:solarized_termcolors=256
 
@@ -302,3 +303,6 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+" Spell checker
+let g:tex_comment_nospell = 1

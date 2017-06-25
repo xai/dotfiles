@@ -7,7 +7,7 @@ set number
 set tw=0
 set wrap linebreak nolist
 set formatoptions+=t
-set guifont=Fantasque\ Sans\ Mono\ 11
+"set guifont=Fantasque\ Sans\ Mono\ 11
 "set rtp+=/home/lessenic/Downloads/src/powerline/powerline/bindings/vim
 set laststatus=2
 set t_Co=256
