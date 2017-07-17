@@ -27,13 +27,13 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
@@ -59,7 +59,6 @@ filetype plugin indent on
 
 colorscheme lucius
 LuciusWhite
-
 "let g:solarized_termcolors=256
 
 " Setup for vim-template
