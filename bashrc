@@ -28,6 +28,7 @@ case "$TERM" in
     xterm-256color) color_prompt=yes;;
     screen-256color) color_prompt=yes;;
     rxvt-unicode-256color) color_prompt=yes;;
+    st-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -49,7 +50,7 @@ fi
 # set host variable if the shell is controlled from ssh
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	if [ "$color_prompt" = yes ]; then
-		host="@\e[5;33;33m\]\h\[\033[00m\]"
+		host="@\e[33;33m\h\[\033[00m\]"
 	else
 		host="@\h"
 	fi
@@ -113,6 +114,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export EDITOR=/usr/bin/vim
+export TERMINAL=/usr/bin/urxvt
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
 export JAVA_HOME=/usr/lib/jvm/oracle-jdk-bin-1.8
 export ECLIPSE_HOME=/opt/eclipse
@@ -148,6 +150,10 @@ if [ -d $HOME/.local/bin ]; then
 	export PATH=$HOME/.local/bin:$PATH
 fi
 
+if [ -d $HOME/.gem/ruby/2.1.0/bin ]; then
+	export PATH=$HOME/.gem/ruby/2.1.0/bin:$PATH
+fi
+
 # useful functions
 function certchain() {
 	# Usage: certchain
@@ -178,11 +184,21 @@ function mux() {
 }
 
 export DARK=false
+fixssh() {
+	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+		if (tmux show-environment | grep "^${key}" > /dev/null); then
+			value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+			export ${key}="${value}"
+		fi
+	done
+}
+
 
 # extra information in git repositories
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
 #  GIT_PROMPT_THEME=Solarized
+  GIT_PROMPT_FETCH_REMOTE_STATUS=0
   source ~/.bash-git-prompt/gitprompt.sh
 fi
 

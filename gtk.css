@@ -1,26 +1,84 @@
-.header-bar {
-	padding-top: 1px;
-	padding-bottom: 1px;
+/* shrink headerbars */
+headerbar {
+    min-height: 0px;
+    padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
+    padding-right: 2px;
+/*    background-color: #2d2d2d; */
+}
+
+headerbar entry,
+headerbar spinbutton,
+headerbar button,
+headerbar separator {
+    margin-top: 0px; /* same as headerbar side padding for nicer proportions */
+    margin-bottom: 0px;
+}
+
+/* shrink ssd titlebars */
+.default-decoration {
+    min-height: 0; /* let the entry and button drive the titlebar size */
+    padding: 0px
+/*    background-color: #2d2d2d; */
+}
+
+.default-decoration .titlebutton {
+    min-height: 0px; /* tweak these two props to reduce button size */
+    min-width: 0px;
+}
+
+window.ssd headerbar.titlebar {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    min-height: 0;
 	font-size: 9px;
 }
 
-.header-bar .button {
+window.ssd headerbar.titlebar button.titlebutton {
+    padding-top: 2px; padding-bottom:2px;
+    min-height: 0;
+}
+
+/*TerminalWindow .notebook {*/
+	/*border: 0;*/
+	/*padding: 0;*/
+	/*[>color: #eee;<]*/
+	/*[>background-color: shade(@active-grey, 1);<]*/
+/*}*/
+
+/*[>TerminalWindow .notebook tab:active {<]*/
+	/*[>background-color: shade(@active, 1);<]*/
+/*[>}<]*/
+
+/*TerminalWindow .notebook tab {*/
+	/*border-radius: 0px;*/
+	/*[>background-color: shade(@bg-grey, 1);<]*/
+/*}*/
+
+/*TerminalWindow .notebook .button,*/
+/*TerminalWindow .notebook .button:active {*/
+	/*padding: 2 2 2 10;*/
+	/*background-image: none;*/
+	/*border: 0;*/
+/*}*/
+
+notebook tab {
+	min-height: 0;
 	padding-top: 2px;
 	padding-bottom: 2px;
+	font-size: 11px;
 }
 
-TerminalWindow .notebook {
-	border: 0;
-	padding: 0;
-	color: #eee;
-	background-color: shade(@active-grey, 1);
+notebook tab button {
+	min-height: 0;
+	min-width: 0;
+	padding: 1px;
+	margin-top: 1px;
+	margin-bottom: 1px;
 }
 
-TerminalWindow .notebook tab:active {
-	background-color: shade(@active, 1);
+notebook button {
+	min-height: 0;
+	min-width: 0;
+	padding: 1px;
 }
 
-TerminalWindow .notebook tab {
-	border-radius: 0px;
-	background-color: shade(@bg-grey, 1);
-}
