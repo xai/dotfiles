@@ -148,6 +148,9 @@ let g:syntastic_tex_checkers = ["chktex"]
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
 
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
 " neomake
 let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '⚡', 'texthl': 'NeomakeWarningSign'}
