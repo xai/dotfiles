@@ -51,7 +51,7 @@ Then reload `.tmux.conf` and press `PREFIX-I` to install the plugins.
 
 ## gnome-shell
 
-I typically use 12 static workspaces with those keybindings:
+I typically use 8-12 static workspaces with those keybindings:
 
 `Ctrl-Fx`: Switch to workspace x
 
