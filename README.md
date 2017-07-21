@@ -11,12 +11,8 @@ Note that I don't use powerline and that the installation of powerline itself is
 
 Optionally, you might want to install the following optional pieces:
 * [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt): enable git prompt when in repo dir
-* [fzf](https://github.com/junegunn/fzf): fuzzy search
 
 ## vimrc
-
-I use [neovim](https://github.com/neovim/neovim), a project that I endorse a lot. Therefore, you can safely assume that my vimrc plays well with neovim.
-Actually, some of the plugins might require neovim.
 
 ### Installation
 1. `cp /path/to/dotfiles/vimrc $HOME/.vimrc`
@@ -32,14 +28,22 @@ Use https://github.com/xai/Xresources.edit to generate `$HOME/.Xresources` using
 
 I use tabbedex because I want named tabs.
 ```
-git clone https://github.com/mina86/urxvt-tabbedex ~/.urxvt/tabbedex
+git clone https://github.com/xai/urxvt-tabbedex ~/.urxvt/tabbedex
 cd ~/.urxvt/tabbedex
 make install-local-symlink
 ```
 
+My fork is just like [upstream](https://github.com/mina86/urxvt-tabbedex), but I disabled the activity mark as I find it rather distracting.
+
 ## tmux
 
-Tmux plugin manager is needed, so you have to clone it first:
+To use the powerline status bar, a python package has to be installes:
+
+`pip3 install --user powerline-status`
+
+Afterwards update the respective path in `.tmux.conf` and reload tmux.
+
+To use plugins, tmux plugin manager is needed, so you have to clone it first:
 
 `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
