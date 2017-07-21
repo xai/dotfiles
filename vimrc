@@ -1,8 +1,5 @@
 set nocompatible
 
-set background=dark
-"set background=light
-
 syntax on
 set number
 set enc=utf-8
@@ -59,7 +56,11 @@ Plugin 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
+set background=dark
+"set background=light
 colorscheme solarized
+"colorscheme lucius
+"LuciusWhite
 
 "let g:solarized_termcolors=256
 
@@ -146,6 +147,9 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_tex_checkers = ["chktex"]
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " neomake
 let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
@@ -302,3 +306,6 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+" Spell checker
+let g:tex_comment_nospell = 1
