@@ -116,7 +116,7 @@ fi
 export EDITOR=/usr/bin/vim
 export TERMINAL=/usr/bin/urxvt
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
-export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-x64
+export JAVA_HOME=/usr/java/default
 export ECLIPSE_HOME=/opt/eclipse
 export GRADLE_HOME=/opt/gradle
 export NNTPSERVER='news.gmane.org'
@@ -193,6 +193,14 @@ fixssh() {
 }
 
 export DARK=true
+
+# powerline
+if [ -f `which powerline-daemon` ]; then
+	powerline-daemon -q
+#	POWERLINE_BASH_CONTINUATION=1
+#	POWERLINE_BASH_SELECT=1
+#	. /usr/share/powerline/bash/powerline.sh
+fi
 
 # extra information in git repositories
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then

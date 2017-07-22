@@ -309,3 +309,5 @@ nmap <leader>bl :ls<CR>
 
 " Spell checker
 let g:tex_comment_nospell = 1
+
+let g:JavaComplete_ShowExternalCommandsOutput = 1
