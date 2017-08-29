@@ -96,7 +96,7 @@ autocmd FileType tex set modeline
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
 "let g:airline_theme='powerlineish'
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#eclim#enabled = 1
 
@@ -144,6 +144,9 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_tex_checkers = ["chktex"]
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " neomake
 let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
