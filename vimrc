@@ -14,7 +14,7 @@ call vundle#rc()
 "
 Plugin 'gmarik/Vundle.vim'
 Plugin 'aperezdc/vim-template'
-Plugin 'artur-shaik/vim-javacomplete2'
+"Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'itchyny/thumbnail.vim'
 Plugin 'jalvesaq/Nvim-R'
@@ -145,8 +145,10 @@ let g:syntastic_check_on_wq = 1
 
 " configure checkers
 let g:syntastic_tex_checkers = ["chktex"]
-let g:syntastic_java_checkers = ['javac']
-let g:syntastic_java_javac_config_file_enabled = 1
+"let g:syntastic_java_checkers = ['javac']
+"let g:syntastic_java_javac_config_file_enabled = 1
+" disable syntastic when using YCM's experimental java support
+let g:syntastic_java_checkers = []
 
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
@@ -306,6 +308,10 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+" Navigate in command mode emacs style
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 " Spell checker
 let g:tex_comment_nospell = 1
