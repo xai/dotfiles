@@ -38,6 +38,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-scripts/vim-stardict'
 Plugin 'Yggdroot/indentLine'
 "Plugin 'junegunn/fzf'
 "Plugin 'neomake/neomake'
@@ -280,7 +281,10 @@ nnoremap <leader>ln :lnext<CR>
 nnoremap <leader>lp :lprevious<CR>
 
 " thesaurus
-nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
+nnoremap <leader>st :OnlineThesaurusCurrentWord<CR>
+
+" stardict
+nnoremap <leader>sd :StarDictCursor<CR>
 
 " easy switching between splits
 nmap <silent> <C-h> :wincmd h<CR>
