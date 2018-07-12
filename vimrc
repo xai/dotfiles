@@ -307,5 +307,9 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
+" Navigate in command mode emacs style
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
 " Spell checker
 let g:tex_comment_nospell = 1
