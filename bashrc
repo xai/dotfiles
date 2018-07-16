@@ -174,6 +174,25 @@ function certchain() {
         s_client -connect "${host_port}" </dev/null 2>/dev/null \
         | grep -E '\ (s|i):'
 }
+function certfinger() {
+	# Usage: certfinger
+    # Display sha256 fingerprint of remote certificate
+    if [[ "$#" -ne 1 ]]; then
+        echo "Usage: ${FUNCNAME} <ip|domain[:port]>"
+        return 1
+    fi
+
+    local host_port="$1"
+
+    if [[ "$1" != *:* ]]; then
+        local host_port="${1}:443"
+    fi
+
+    openssl \
+        s_client -connect "${host_port}" </dev/null 2>/dev/null \
+        | openssl x509 -noout -fingerprint -sha256
+}
+
 
 function mux() {
 	if [ -z "$1" ]; then
