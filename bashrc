@@ -194,14 +194,6 @@ fixssh() {
 
 export DARK=true
 
-# powerline
-if [ -f `which powerline-daemon` ]; then
-	powerline-daemon -q
-#	POWERLINE_BASH_CONTINUATION=1
-#	POWERLINE_BASH_SELECT=1
-#	. /usr/share/powerline/bash/powerline.sh
-fi
-
 # extra information in git repositories
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
