@@ -17,11 +17,11 @@ Plugin 'aperezdc/vim-template'
 "Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'itchyny/thumbnail.vim'
-Plugin 'jalvesaq/Nvim-R'
+"Plugin 'jalvesaq/Nvim-R'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'kien/ctrlp.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+"Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
@@ -161,9 +161,6 @@ let g:neomake_message_sign = {'text': '☛', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_open_list = 1
 "autocmd! BufWritePost * Neomake
 
-" Tagbar
-nmap <F8> :TagbarToggle<CR>
-
 " Make
 nmap <F9> :Make<CR>
 
@@ -182,6 +179,9 @@ call matchadd('MyFixme', '\s\+$')
 " Always start on first line of git commit message
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " LaTeX
 let g:tex_flavor='latex'
 " use --server SOMENAME to use async
@@ -191,6 +191,8 @@ let g:LatexBox_viewer='evince'
 " The quickfix window is opened automatically if not empty but the cursor
 " stays in the current window.
 let g:LatexBox_quickfix=2
+
+au BufNewFile,BufRead *.tex nmap <F8> :LatexTOCToggle<CR>
 
 " Pulse
 "let g:vim_search_pulse_mode = 'cursor_line'
