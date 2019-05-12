@@ -192,6 +192,14 @@ fixssh() {
 	done
 }
 
+function pretty_csv {
+	column -t -s';' | less -F -S -X -K
+}
+
+function csv_cols {
+	head -n1 | tr ';' '\n' | cat -n
+}
+
 export DARK=true
 
 # extra information in git repositories
