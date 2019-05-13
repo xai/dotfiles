@@ -116,7 +116,7 @@ fi
 export EDITOR=/usr/bin/vim
 export TERMINAL=/usr/bin/urxvt
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
-export JAVA_HOME=/usr/java/default
+export JAVA_HOME=/usr/lib/jvm/java
 export ECLIPSE_HOME=/opt/eclipse
 export GRADLE_HOME=/opt/gradle
 export NNTPSERVER='news.gmane.org'
