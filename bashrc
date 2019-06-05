@@ -153,10 +153,6 @@ if [ -d $HOME/.local/bin ]; then
 	export PATH=$HOME/.local/bin:$PATH
 fi
 
-if [ -d $HOME/.gem/ruby/2.1.0/bin ]; then
-	export PATH=$HOME/.gem/ruby/2.1.0/bin:$PATH
-fi
-
 # useful functions
 function certchain() {
 	# Usage: certchain
