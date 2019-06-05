@@ -143,6 +143,9 @@ fi
 if [ -d /opt/maven/bin ]; then
 	export PATH=/opt/maven/bin:$PATH
 fi
+if [ -d /usr/local/texlive/2019/bin/x86_64-linux ]; then
+	export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+fi
 if [ -d $HOME/bin ]; then
 	export PATH=$HOME/bin:$PATH
 fi
