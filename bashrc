@@ -47,12 +47,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+default='\[\e[39m\]'
+cyan='\[\e[36m\]'
+yellow='\[\e[33m\]'
 # set host variable if the shell is controlled from ssh
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	if [ "$color_prompt" = yes ]; then
-		host="@\e[33;33m\h\[\033[00m\]"
+		host="@${yellow}\h${default}"
 	else
-		host="@\h"
+		host='@\h'
 	fi
 fi
 
@@ -60,7 +63,7 @@ if [ "$color_prompt" = yes ]; then
 	# cyan
 	# PS1="\[\e[00;36m\]${host} \[\e[0m\]\w \[\e[00;36m\]\\$\[\e[0m\] "
 	# PS1="\[\e[01;36m\]${host} \[\e[0m\]\w \[\e[01;36m\]\\$\[\e[0m\] "
-	PS1="\[\e[0m\]${host} \[\e[00;36m\]\w \[\e[0m\]\\$ "
+	PS1="${host} ${cyan}\w ${default}\$ "
 
 	# blue
 	# PS1="\[\e[00;34m\]${host} \[\e[0m\]\w \[\e[00;34m\]\\$\[\e[0m\] "
