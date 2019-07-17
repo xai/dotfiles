@@ -282,9 +282,11 @@ function! ToggleSchemes()
 	if (g:colors_name == "solarized")
 		set background=light
 		colorscheme default
+		hi Terminal ctermbg=white ctermfg=black guibg=white guifg=black
 	else
 		set background=dark
 		colorscheme solarized
+		hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
 	endif
 endfunction
 nnoremap <F7> :call ToggleSchemes()<CR>
@@ -319,6 +321,9 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
+nmap <leader>sh :terminal<CR>
 
 " Navigate in command mode emacs style
 cnoremap <C-a> <Home>
