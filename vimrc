@@ -45,6 +45,7 @@ Plugin 'masukomi/vim-markdown-folding'
 "Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vim-auto-save'
 "Plugin 'vim-scripts/vimwiki'
+Plugin 'xai/vim-scholar'
 
 "
 " Colorschemes
