@@ -279,15 +279,23 @@ let g:solarized_diffmode="high"
 "let g:solarized_termcolors=256
 
 " switch between solarized and another scheme (which does well on 16 colors)
+let g:profile=1
 function! ToggleSchemes()
-	if (g:colors_name == "solarized")
+	if (g:profile == 1)
 		set background=light
-		colorscheme default
+		colorscheme solarized
 		hi Terminal ctermbg=white ctermfg=black guibg=white guifg=black
-	else
+		let g:profile = 3
+	elseif (g:profile == 2)
 		set background=dark
 		colorscheme solarized
 		hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
+		let g:profile = 1
+	else
+		set background=light
+		colorscheme default
+		hi Terminal ctermbg=white ctermfg=black guibg=white guifg=black
+		let g:profile = 2
 	endif
 endfunction
 nnoremap <F7> :call ToggleSchemes()<CR>
