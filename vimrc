@@ -31,7 +31,7 @@ Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
@@ -92,6 +92,12 @@ autocmd FileType tex set modeline
 "autocmd FileType tex highlight ExtraWhitespace ctermbg=red guibg=red
 "autocmd FileType tex match ExtraWhitespace /\s\+$/
 
+" Show file options above the command line
+set wildmenu
+
+" Set the working directory to wherever the open file lives
+set autochdir
+
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
@@ -122,7 +128,7 @@ set t_Co=256
 "set tags+=./.tags
 
 " gnupg
-let g:GPGExecutable = 'gpg2'
+"let g:GPGExecutable = 'gpg2'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1

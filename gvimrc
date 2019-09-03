@@ -16,3 +16,4 @@ set guioptions-=T  "remove toolbar
 "set guioptions-=L  "remove scrollbar
 "set guioptions-=l  "remove scrollbar
 set nomousehide
+set nonumber
