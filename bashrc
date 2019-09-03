@@ -22,6 +22,8 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# [ -n $FBTERM] && export TERM=fbterm
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -29,6 +31,7 @@ case "$TERM" in
     screen-256color) color_prompt=yes;;
     rxvt-unicode-256color) color_prompt=yes;;
     st-256color) color_prompt=yes;;
+    fbterm) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -123,6 +126,7 @@ export JAVA_HOME=/usr/lib/jvm/java
 export ECLIPSE_HOME=/opt/eclipse
 export GRADLE_HOME=/opt/gradle
 export NNTPSERVER='news.gmane.org'
+export PINENTRY_USER_DATA='gnome'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -154,6 +158,10 @@ if [ -d $HOME/bin ]; then
 fi
 if [ -d $HOME/.local/bin ]; then
 	export PATH=$HOME/.local/bin:$PATH
+fi
+export GOPATH=$HOME/go
+if [ -d $HOME/go/bin ]; then
+	export PATH=$HOME/go/bin:$PATH
 fi
 
 # useful functions
@@ -200,6 +208,10 @@ function pretty_csv {
 
 function csv_cols {
 	head -n1 | tr ';' '\n' | cat -n
+}
+
+function pp_history {
+	paste -sd '#\n' ~/.bash_eternal_history | awk -F"#" '{d=$2 ; $2="";print strftime("%Y-%m-%d %T",d)" "$0}'
 }
 
 export DARK=true
