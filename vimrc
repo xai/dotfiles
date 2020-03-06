@@ -55,6 +55,7 @@ Plugin 'vim-scripts/Lucius'
 Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'sheerun/vim-wombat-scheme'
 
 filetype plugin indent on
 

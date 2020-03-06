@@ -214,6 +214,10 @@ function pp_history {
 	paste -sd '#\n' ~/.bash_eternal_history | awk -F"#" '{d=$2 ; $2="";print strftime("%Y-%m-%d %T",d)" "$0}'
 }
 
+function spellcheck {
+	java -jar $HOME/Downloads/software/LanguageTool-4.9-SNAPSHOT/languagetool-commandline.jar -l en-US $1
+}
+
 export DARK=true
 
 # extra information in git repositories
