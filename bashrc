@@ -189,7 +189,11 @@ function mux() {
 	if [ -z "$1" ]; then
 		tmux a || tmux
 	else
-		tmux a -t $1 || tmux new -s $1
+		if [ "$1" == "console" ]; then
+			tmux -L console -f ~/.tmux-alternative.conf a -t $1 || tmux -L console -f ~/.tmux-alternative.conf new -s $1
+		else
+			tmux a -t $1 || tmux new -s $1
+		fi
 	fi
 }
 
