@@ -126,7 +126,8 @@ export JAVA_HOME=/usr/lib/jvm/java
 export ECLIPSE_HOME=/opt/eclipse
 export GRADLE_HOME=/opt/gradle
 export NNTPSERVER='news.gmane.org'
-export PINENTRY_USER_DATA='gnome'
+#export PINENTRY_USER_DATA='gnome'
+export PINENTRY_USER_DATA='curses'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
