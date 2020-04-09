@@ -154,8 +154,8 @@ fi
 if [ -d /usr/local/texlive/2019/bin/x86_64-linux ]; then
 	export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 fi
-if [ -d $HOME/bin ]; then
-	export PATH=$HOME/bin:$PATH
+if [ -d $HOME/.cargo/bin ]; then
+	export PATH=$HOME/.cargo/bin:$PATH
 fi
 if [ -d $HOME/.local/bin ]; then
 	export PATH=$HOME/.local/bin:$PATH
@@ -163,6 +163,9 @@ fi
 export GOPATH=$HOME/go
 if [ -d $HOME/go/bin ]; then
 	export PATH=$HOME/go/bin:$PATH
+fi
+if [ -d $HOME/bin ]; then
+	export PATH=$HOME/bin:$PATH
 fi
 
 # useful functions
