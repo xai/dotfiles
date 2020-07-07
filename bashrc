@@ -120,39 +120,17 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-export EDITOR=vim
-export TERMINAL=urxvt
-export TORSOCKS_CONF_FILE=~/.torsocks.conf
-export JAVA_HOME=/usr/lib/jvm/java
-export ECLIPSE_HOME=/opt/eclipse
-export GRADLE_HOME=$HOME/.gradle
-export NNTPSERVER='news.gmane.org'
 #export PINENTRY_USER_DATA='gnome'
 export PINENTRY_USER_DATA='curses'
 
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
-	        source /usr/local/share/bash-completion/bash_completion.sh
+	source /usr/local/share/bash-completion/bash_completion.sh
+
+if [ "$COLORTERM" == "gnome-terminal" ] ; then
+	TERM=xterm-256color
+fi
 
 # PATH
-if [ -d /opt/gradle/bin ]; then
-	export PATH=/opt/gradle/bin:$PATH
-fi
-if [ -d /opt/maven/bin ]; then
-	export PATH=/opt/maven/bin:$PATH
-fi
-if [ -d /usr/local/texlive/2019/bin/x86_64-linux ]; then
-	export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
-fi
-if [ -d $HOME/.cargo/bin ]; then
-	export PATH=$HOME/.cargo/bin:$PATH
-fi
-if [ -d $HOME/.local/bin ]; then
-	export PATH=$HOME/.local/bin:$PATH
-fi
-export GOPATH=$HOME/go
-if [ -d $HOME/go/bin ]; then
-	export PATH=$HOME/go/bin:$PATH
-fi
 if [ -d $HOME/bin ]; then
 	export PATH=$HOME/bin:$PATH
 fi
@@ -227,9 +205,3 @@ if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   GIT_PROMPT_THEME=Solarized
   source ~/.bash-git-prompt/gitprompt.sh
 fi
-
-# fuzzy search for bash
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
