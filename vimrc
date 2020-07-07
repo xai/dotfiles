@@ -1,8 +1,5 @@
 set nocompatible
 
-set background=dark
-"set background=light
-
 syntax on
 set number
 set enc=utf-8
@@ -17,37 +14,41 @@ call vundle#rc()
 "
 Plugin 'gmarik/Vundle.vim'
 Plugin 'aperezdc/vim-template'
-Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'beloglazov/vim-online-thesaurus'
+"Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'itchyny/thumbnail.vim'
-Plugin 'jalvesaq/Nvim-R'
+"Plugin 'jalvesaq/Nvim-R'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'scrooloose/nerdtree.git'
+"Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic'
-Plugin 'szw/vim-dict'
+"Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
+Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Yggdroot/indentLine'
+Plugin 'masukomi/vim-markdown-folding'
 "Plugin 'junegunn/fzf'
 "Plugin 'neomake/neomake'
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vim-auto-save'
 "Plugin 'vim-scripts/vimwiki'
+"Plugin 'mreppen/vim-scholar'
+Plugin 'xai/vim-scholar'
 
 "
 " Colorschemes
@@ -56,12 +57,12 @@ Plugin 'vim-scripts/Lucius'
 Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'sheerun/vim-wombat-scheme'
 
 filetype plugin indent on
 
-colorscheme solarized
-
-"let g:solarized_termcolors=256
+" define leader key
+let mapleader = " "
 
 " Setup for vim-template
 let g:username='Olaf Lessenich'
@@ -94,6 +95,12 @@ autocmd FileType tex set modeline
 "autocmd FileType tex highlight ExtraWhitespace ctermbg=red guibg=red
 "autocmd FileType tex match ExtraWhitespace /\s\+$/
 
+" Show file options above the command line
+set wildmenu
+
+" Set the working directory to wherever the open file lives
+set autochdir
+
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
@@ -123,6 +130,9 @@ set t_Co=256
 "let g:ycm_autoclose_preview_window_after_completion=1
 "set tags+=./.tags
 
+" gnupg
+"let g:GPGExecutable = 'gpg2'
+
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
@@ -144,8 +154,13 @@ let g:syntastic_check_on_wq = 1
 
 " configure checkers
 let g:syntastic_tex_checkers = ["chktex"]
-let g:syntastic_java_checkers = ['javac']
-let g:syntastic_java_javac_config_file_enabled = 1
+"let g:syntastic_java_checkers = ['javac']
+"let g:syntastic_java_javac_config_file_enabled = 1
+" disable syntastic when using YCM's experimental java support
+let g:syntastic_java_checkers = []
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " neomake
 let g:neomake_error_sign = {'text': '☢', 'texthl': 'NeomakeErrorSign'}
@@ -216,9 +231,6 @@ function! <SID>Snip() range
 endfunction
 com! -nargs=0 -range Snip :<line1>,<line2>call <SID>Snip()
 
-" define leader key
-let mapleader = " "
-
 " CtrlP
 nnoremap <Leader>r :CtrlPMRU<CR>
 nnoremap <Leader>p :CtrlP<CR>
@@ -265,16 +277,42 @@ nnoremap <leader>Gp :Gpush<CR>
 " really cool gui for git (incl. interactive staging)
 nnoremap <leader>gg :!git-cola &<CR>
 
-" solarized
+"--- setup colorscheme ---
+" default
+set background=dark
+colorscheme solarized
+
+" toggle solarized dark<->light
 call togglebg#map("<F6>")
 let g:solarized_diffmode="high"
+"let g:solarized_termcolors=256
+
+" switch between solarized and another scheme (which does well on 16 colors)
+let g:profile=1
+function! ToggleSchemes()
+	if (g:profile == 1)
+		set background=light
+		colorscheme solarized
+		hi Terminal ctermbg=white ctermfg=black guibg=white guifg=black
+		let g:profile = 3
+	elseif (g:profile == 2)
+		set background=dark
+		colorscheme solarized
+		hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
+		let g:profile = 1
+	else
+		set background=light
+		colorscheme default
+		hi Terminal ctermbg=white ctermfg=black guibg=white guifg=black
+		let g:profile = 2
+	endif
+endfunction
+nnoremap <F7> :call ToggleSchemes()<CR>
+"---
 
 " Syntastic
 nnoremap <leader>ln :lnext<CR>
 nnoremap <leader>lp :lprevious<CR>
-
-" thesaurus
-nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
 
 " easy switching between splits
 nmap <silent> <C-h> :wincmd h<CR>
@@ -285,7 +323,6 @@ nmap <silent> <C-l> :wincmd l<CR>
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
-
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
 nmap <leader>T :enew<cr>
@@ -302,3 +339,19 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
+nmap <leader>sh :terminal<CR>
+
+" Navigate in command mode emacs style
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" Spell checker
+let g:tex_comment_nospell = 1
+
+let g:JavaComplete_ShowExternalCommandsOutput = 1
+
+" Fold setting
+" nested folding for markdown
+autocmd FileType markdown set foldexpr=NestedMarkdownFolds()

@@ -22,9 +22,7 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-if [ "$COLORTERM" == "gnome-terminal" ] ; then
-	TERM=xterm-256color
-fi
+# [ -n $FBTERM] && export TERM=fbterm
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -33,6 +31,7 @@ case "$TERM" in
     screen-256color) color_prompt=yes;;
     rxvt-unicode-256color) color_prompt=yes;;
     st-256color) color_prompt=yes;;
+    fbterm) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -52,12 +51,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+default='\[\e[39m\]'
+cyan='\[\e[36m\]'
+yellow='\[\e[33m\]'
 # set host variable if the shell is controlled from ssh
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	if [ "$color_prompt" = yes ]; then
-		host="@\e[33;33m\h\[\033[00m\]"
+		host="@${yellow}\h${default}"
 	else
-		host="@\h"
+		host='@\h'
 	fi
 fi
 
@@ -65,7 +67,7 @@ if [ "$color_prompt" = yes ]; then
 	# cyan
 	# PS1="\[\e[00;36m\]${host} \[\e[0m\]\w \[\e[00;36m\]\\$\[\e[0m\] "
 	# PS1="\[\e[01;36m\]${host} \[\e[0m\]\w \[\e[01;36m\]\\$\[\e[0m\] "
-	PS1="\[\e[0m\]${host} \[\e[00;36m\]\w \[\e[0m\]\\$ "
+	PS1="${host} ${cyan}\w ${default}\$ "
 
 	# blue
 	# PS1="\[\e[00;34m\]${host} \[\e[0m\]\w \[\e[00;34m\]\\$\[\e[0m\] "
@@ -121,10 +123,12 @@ fi
 export EDITOR=vim
 export TERMINAL=urxvt
 export TORSOCKS_CONF_FILE=~/.torsocks.conf
-export JAVA_HOME=/usr/local/openjdk8
+export JAVA_HOME=/usr/lib/jvm/java
 export ECLIPSE_HOME=/opt/eclipse
 export GRADLE_HOME=$HOME/.gradle
 export NNTPSERVER='news.gmane.org'
+#export PINENTRY_USER_DATA='gnome'
+export PINENTRY_USER_DATA='curses'
 
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
 	        source /usr/local/share/bash-completion/bash_completion.sh
@@ -136,15 +140,21 @@ fi
 if [ -d /opt/maven/bin ]; then
 	export PATH=/opt/maven/bin:$PATH
 fi
-if [ -d $HOME/bin ]; then
-	export PATH=$HOME/bin:$PATH
+if [ -d /usr/local/texlive/2019/bin/x86_64-linux ]; then
+	export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+fi
+if [ -d $HOME/.cargo/bin ]; then
+	export PATH=$HOME/.cargo/bin:$PATH
 fi
 if [ -d $HOME/.local/bin ]; then
 	export PATH=$HOME/.local/bin:$PATH
 fi
-
-if [ -d $HOME/.gem/ruby/2.1.0/bin ]; then
-	export PATH=$HOME/.gem/ruby/2.1.0/bin:$PATH
+export GOPATH=$HOME/go
+if [ -d $HOME/go/bin ]; then
+	export PATH=$HOME/go/bin:$PATH
+fi
+if [ -d $HOME/bin ]; then
+	export PATH=$HOME/bin:$PATH
 fi
 
 # useful functions
@@ -172,7 +182,11 @@ function mux() {
 	if [ -z "$1" ]; then
 		tmux a || tmux
 	else
-		tmux a -t $1 || tmux new -s $1
+		if [ "$1" == "console" ]; then
+			tmux -L console -f ~/.tmux-alternative.conf a -t $1 || tmux -L console -f ~/.tmux-alternative.conf new -s $1
+		else
+			tmux a -t $1 || tmux new -s $1
+		fi
 	fi
 }
 
@@ -183,6 +197,22 @@ fixssh() {
 			export ${key}="${value}"
 		fi
 	done
+}
+
+function pretty_csv {
+	column -t -s';' | less -F -S -X -K
+}
+
+function csv_cols {
+	head -n1 | tr ';' '\n' | cat -n
+}
+
+function pp_history {
+	paste -sd '#\n' ~/.bash_eternal_history | awk -F"#" '{d=$2 ; $2="";print strftime("%Y-%m-%d %T",d)" "$0}'
+}
+
+function spellcheck {
+	java -jar $HOME/Downloads/software/LanguageTool-4.9-SNAPSHOT/languagetool-commandline.jar -l en-US $1
 }
 
 export DARK=true
@@ -201,5 +231,5 @@ fi
 # fuzzy search for bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Use less as pager
-PAGER=less
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
