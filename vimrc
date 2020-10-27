@@ -95,11 +95,16 @@ autocmd FileType tex set modeline
 "autocmd FileType tex highlight ExtraWhitespace ctermbg=red guibg=red
 "autocmd FileType tex match ExtraWhitespace /\s\+$/
 
+" Set the working directory to wherever the open file lives
+"set autochdir
+
+" Search in current subdirs
+set path+=**
+
 " Show file options above the command line
 set wildmenu
 
-" Set the working directory to wherever the open file lives
-set autochdir
+nnoremap <C-p> :find *
 
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
@@ -346,6 +351,9 @@ nmap <leader>sh :terminal<CR>
 " Navigate in command mode emacs style
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+
+" Copy (full) path of current file to paste buffer
+nmap cp :let @" = expand("%:p")<cr>
 
 " Spell checker
 let g:tex_comment_nospell = 1
