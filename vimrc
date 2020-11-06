@@ -98,6 +98,8 @@ autocmd FileType tex set modeline
 " Set the working directory to wherever the open file lives
 "set autochdir
 
+set autoread
+
 " Search in current subdirs
 set path+=**
 
@@ -204,6 +206,12 @@ let g:LatexBox_viewer='evince'
 " The quickfix window is opened automatically if not empty but the cursor
 " stays in the current window.
 let g:LatexBox_quickfix=2
+autocmd FileType tex imap <buffer> [[     \begin{
+autocmd FileType tex imap <buffer> ]]     <Plug>LatexCloseCurEnv
+autocmd FileType tex nmap <buffer> <F5>   <Plug>LatexChangeEnv
+autocmd FileType tex vmap <buffer> <F7>   <Plug>LatexWrapSelection
+autocmd FileType tex vmap <buffer> <S-F7> <Plug>LatexEnvWrapSelection
+autocmd FileType tex imap <buffer> ((     \eqref{
 
 " Pulse
 "let g:vim_search_pulse_mode = 'cursor_line'
@@ -318,32 +326,6 @@ nnoremap <F7> :call ToggleSchemes()<CR>
 " Syntastic
 nnoremap <leader>ln :lnext<CR>
 nnoremap <leader>lp :lprevious<CR>
-
-" easy switching between splits
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-l> :wincmd l<CR>
-
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
-set hidden
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew<cr>
-
-" Move to the next buffer
-nmap <leader>l :bnext<CR>
-
-" Move to the previous buffer
-nmap <leader>h :bprevious<CR>
-
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
-
-" Show all open buffers and their status
-nmap <leader>bl :ls<CR>
 
 hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
 nmap <leader>sh :terminal<CR>
