@@ -345,3 +345,5 @@ let g:JavaComplete_ShowExternalCommandsOutput = 1
 " Fold setting
 " nested folding for markdown
 autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+
+set directory^=$HOME/.vim/tmp//
