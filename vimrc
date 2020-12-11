@@ -49,6 +49,7 @@ Plugin 'masukomi/vim-markdown-folding'
 "Plugin 'vim-scripts/vim-auto-save'
 "Plugin 'vim-scripts/vimwiki'
 "Plugin 'mreppen/vim-scholar'
+Plugin 'voldikss/vim-translator'
 Plugin 'xai/vim-scholar'
 
 "
@@ -342,6 +343,10 @@ nmap cp :let @" = expand("%:p")<cr>
 let g:tex_comment_nospell = 1
 
 let g:JavaComplete_ShowExternalCommandsOutput = 1
+
+" Translator
+let g:translator_source_lang = 'de'
+let g:translator_target_lang = 'en'
 
 " Fold setting
 " nested folding for markdown
