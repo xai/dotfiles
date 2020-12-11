@@ -151,6 +151,9 @@ fi
 if [ -d /opt/maven/bin ]; then
 	export PATH=/opt/maven/bin:$PATH
 fi
+if [ -d $HOME/opt/platform-tools ]; then
+	export PATH=$HOME/opt/platform-tools:$PATH
+fi
 if [ -d /usr/local/texlive/2019/bin/x86_64-linux ]; then
 	export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 fi
@@ -225,6 +228,9 @@ function pp_history {
 function spellcheck {
 	java -jar $HOME/Downloads/software/LanguageTool-4.9-SNAPSHOT/languagetool-commandline.jar -l en-US $1
 }
+
+bib2unix () { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
+unix2bib () { tr -d "\n" | tr "\0" "\n"; }
 
 export DARK=true
 
