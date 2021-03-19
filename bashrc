@@ -154,8 +154,10 @@ fi
 if [ -d $HOME/opt/platform-tools ]; then
 	export PATH=$HOME/opt/platform-tools:$PATH
 fi
-if [ -d /usr/local/texlive/2019/bin/x86_64-linux ]; then
-	export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+if [ -d /usr/local/texlive/2020/bin/x86_64-linux ]; then
+	export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+	export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
+	export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 fi
 if [ -d $HOME/.cargo/bin ]; then
 	export PATH=$HOME/.cargo/bin:$PATH
@@ -172,6 +174,9 @@ if [ -d $HOME/bin ]; then
 fi
 
 # useful functions
+
+expandurl() { curl -sIL -m 1 $1 2>&1 | awk '/^location/ {print $2}' | tail -n1; }
+
 function certchain() {
 	# Usage: certchain
     # Display PKI chain-of-trust for a given domain
@@ -196,7 +201,7 @@ function mux() {
 	if [ -z "$1" ]; then
 		tmux a || tmux
 	else
-		if [ "$1" == "console" ]; then
+		if [ "$1" == "console" -o "$1" == "vim" ]; then
 			tmux -L console -f ~/.tmux-alternative.conf a -t $1 || tmux -L console -f ~/.tmux-alternative.conf new -s $1
 		else
 			tmux a -t $1 || tmux new -s $1
