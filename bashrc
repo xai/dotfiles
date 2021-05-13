@@ -159,6 +159,11 @@ if [ -d /usr/local/texlive/2020/bin/x86_64-linux ]; then
 	export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
 	export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 fi
+if [ -d /usr/local/texlive/2021/bin/x86_64-linux ]; then
+	export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+	export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
+	export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH
+fi
 if [ -d $HOME/.cargo/bin ]; then
 	export PATH=$HOME/.cargo/bin:$PATH
 fi
@@ -236,6 +241,8 @@ function spellcheck {
 
 bib2unix () { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
 unix2bib () { tr -d "\n" | tr "\0" "\n"; }
+
+resolve_redirect () { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
 
 export DARK=true
 
