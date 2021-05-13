@@ -51,6 +51,8 @@ Plugin 'masukomi/vim-markdown-folding'
 "Plugin 'mreppen/vim-scholar'
 Plugin 'voldikss/vim-translator'
 Plugin 'xai/vim-scholar'
+Plugin 'sainnhe/gruvbox-material'
+Plugin 'psf/black'
 
 "
 " Colorschemes
@@ -279,6 +281,9 @@ autocmd FileType c,cpp nnoremap <leader>c :YcmCompleter GoToDeclaration<CR>
 " clang-format
 map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
 imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.7.py<cr>
+
+" black format
+let g:black_linelength=79
 
 " Fugitive
 nnoremap <leader>Gw :Gwrite<CR>
