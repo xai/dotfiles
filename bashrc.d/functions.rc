@@ -1,0 +1,64 @@
+expandurl() { curl -sIL -m 1 $1 2>&1 | awk '/^location/ {print $2}' | tail -n1; }
+
+function certchain() {
+	# Usage: certchain
+    # Display PKI chain-of-trust for a given domain
+    # GistID: https://gist.github.com/joshenders/cda916797665de69ebcd
+    if [[ "$#" -ne 1 ]]; then
+        echo "Usage: ${FUNCNAME} <ip|domain[:port]>"
+        return 1
+    fi
+
+    local host_port="$1"
+
+    if [[ "$1" != *:* ]]; then
+        local host_port="${1}:443"
+    fi
+
+    openssl \
+        s_client -connect "${host_port}" </dev/null 2>/dev/null \
+        | grep -E '\ (s|i):'
+}
+
+function mux() {
+	if [ -z "$1" ]; then
+		tmux a || tmux
+	else
+		if [ "$1" == "console" -o "$1" == "vim" ]; then
+			tmux -L console -f ~/.tmux-alternative.conf a -t $1 || tmux -L console -f ~/.tmux-alternative.conf new -s $1
+		else
+			tmux a -t $1 || tmux new -s $1
+		fi
+	fi
+}
+
+fixssh() {
+	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+		if (tmux show-environment | grep "^${key}" > /dev/null); then
+			value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+			export ${key}="${value}"
+		fi
+	done
+}
+
+function pretty_csv {
+	column -t -s';' | less -F -S -X -K
+}
+
+function csv_cols {
+	head -n1 | tr ';' '\n' | cat -n
+}
+
+function pp_history {
+	paste -sd '#\n' ~/.bash_eternal_history | awk -F"#" '{d=$2 ; $2="";print strftime("%Y-%m-%d %T",d)" "$0}'
+}
+
+function spellcheck {
+	java -jar $HOME/Downloads/software/LanguageTool-4.9-SNAPSHOT/languagetool-commandline.jar -l en-US $1
+}
+
+bib2unix () { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
+unix2bib () { tr -d "\n" | tr "\0" "\n"; }
+
+resolve_redirect () { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
+

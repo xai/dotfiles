@@ -1,0 +1,72 @@
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+    xterm-256color) color_prompt=yes;;
+    screen-256color) color_prompt=yes;;
+    rxvt-unicode-256color) color_prompt=yes;;
+    st-256color) color_prompt=yes;;
+    fbterm) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+default='\[\e[39m\]'
+cyan='\[\e[36m\]'
+yellow='\[\e[33m\]'
+# set host variable if the shell is controlled from ssh
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	if [ "$color_prompt" = yes ]; then
+		host="@${yellow}\h${default}"
+	else
+		host='@\h'
+	fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+	# cyan
+	# PS1="\[\e[00;36m\]${host} \[\e[0m\]\w \[\e[00;36m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;36m\]${host} \[\e[0m\]\w \[\e[01;36m\]\\$\[\e[0m\] "
+	PS1="${host} ${cyan}\w ${default}\$ "
+
+	# blue
+	# PS1="\[\e[00;34m\]${host} \[\e[0m\]\w \[\e[00;34m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;34m\]${host} \[\e[0m\]\w \[\e[01;34m\]\\$\[\e[0m\] "
+	# PS1="\[\e[0m\]${host} \[\e[00;34m\]\w \[\e[0m\]\\$ "
+
+	# green
+	# PS1="\[\e[00;32m\]${host} \[\e[0m\]\w \[\e[00;32m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;32m\]${host} \[\e[0m\]\w \[\e[01;32m\]\\$\[\e[0m\] "
+	# PS1="\[\e[0m\]${host} \[\e[00;32m\]\w \[\e[0m\]\\$ "
+
+	# yellow
+	# PS1="\[\e[00;33m\]${host} \[\e[0m\]\w \[\e[00;33m\]\\$\[\e[0m\] "
+	# PS1="\[\e[01;33m\]${host} \[\e[0m\]\w \[\e[01;33m\]\\$\[\e[0m\] "
+	# PS1="\[\e[0m\]${host} \[\e[00;33m\]\w \[\e[0m\]\\$ "
+else
+    PS1='${host} \w \$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+

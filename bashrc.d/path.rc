@@ -1,0 +1,38 @@
+if [ -d /opt/gradle/bin ]; then
+	export PATH=/opt/gradle/bin:$PATH
+fi
+if [ -d /opt/maven/bin ]; then
+	export PATH=/opt/maven/bin:$PATH
+fi
+if [ -d $HOME/opt/platform-tools ]; then
+	export PATH=$HOME/opt/platform-tools:$PATH
+fi
+if [ -d /usr/local/texlive/2020/bin/x86_64-linux ]; then
+	export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+	export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
+	export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
+fi
+if [ -d /usr/local/texlive/2021/bin/x86_64-linux ]; then
+	export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+	export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
+	export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH
+fi
+if [ -d /usr/local/texlive/2022/bin/x86_64-linux ]; then
+	export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
+	export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
+	export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
+fi
+if [ -d $HOME/.cargo/bin ]; then
+	export PATH=$HOME/.cargo/bin:$PATH
+fi
+if [ -d $HOME/.local/bin ]; then
+	export PATH=$HOME/.local/bin:$PATH
+fi
+export GOPATH=$HOME/go
+if [ -d $HOME/go/bin ]; then
+	export PATH=$HOME/go/bin:$PATH
+fi
+if [ -d $HOME/bin ]; then
+	export PATH=$HOME/bin:$PATH
+fi
+
