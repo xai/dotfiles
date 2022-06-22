@@ -12,7 +12,7 @@ call vundle#rc()
 "
 " Features
 "
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
