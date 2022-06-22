@@ -45,7 +45,19 @@ Tabs and titlebars take lots of space by default, so I tweaked my `$HOME/.config
 ### Switching Windows (alternatetab like)
 Alternate tab extension doesn't work with gnome shell > 3.32 and it never did much anyway.  
 To achieve the same results, run  
-`gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"`
+<!-- `gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"` -->
+```
+dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Super>Tab']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-applications-backward "['<Shift><Super>Tab']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-windows-backward "['<Shift><Alt>Tab']"
+```
+
+### Disable automounting
+```
+gsettings set org.gnome.desktop.media-handling automount false
+gsettings set org.gnome.desktop.media-handling automount-open false
+```
 
 ### Fix ugly terminal menu bar (>3.32)
 `gsettings set org.gnome.Terminal.Legacy.Settings headerbar "@mb false"`
