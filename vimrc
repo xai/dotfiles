@@ -288,7 +288,7 @@ let g:black_linelength=79
 " Fugitive
 nnoremap <leader>Gw :Gwrite<CR>
 nnoremap <leader>Gc :Gcommit -s<CR>
-nnoremap <leader>Gs :Gstatus<CR>
+nnoremap <leader>Gs :Git<CR>
 nnoremap <leader>Gd :Gdiff<CR>
 nnoremap <leader>GD :Git diff --cached<CR>
 nnoremap <leader>Gb :Gblame<CR>
@@ -343,6 +343,10 @@ cnoremap <C-e> <End>
 
 " Copy (full) path of current file to paste buffer
 nmap cp :let @" = expand("%:p")<cr>
+
+" insert timestamps
+nmap <F3> i<C-R>=strftime("%Y-%m-%d %H:%M")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 
 " Spell checker
 let g:tex_comment_nospell = 1
