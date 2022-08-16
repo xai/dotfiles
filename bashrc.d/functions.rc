@@ -62,3 +62,5 @@ unix2bib () { tr -d "\n" | tr "\0" "\n"; }
 
 resolve_redirect () { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
 
+ggb() { git grep -n "$@" | while IFS=: read i j k; do git blame -f -L $j,$j $i; done }
+
