@@ -17,7 +17,9 @@ Just my dotfiles... Don't blame me when they break your stuff.
    `cd $HOME/.vim/bundle/YouCompleteMe && ./install.py --clang-completer`
 
 ## tmux
-`ln -s /path/to/dotfiles/tmux.conf $HOME/.tmux.conf`
+1. `ln -s /path/to/dotfiles/tmux.conf $HOME/.tmux.conf`
+2. `git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm`
+3. Open a tmux session and run `Ctrl-b I` (uppercase i) to install plugins via tpm
 
 ## gnome-shell
 
