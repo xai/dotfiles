@@ -64,3 +64,24 @@ resolve_redirect () { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
 
 ggb() { git grep -n "$@" | while IFS=: read i j k; do git blame -f -L $j,$j $i; done }
 
+user_confirm() {
+	read -r -p "${1:-Are you sure? [y/N]} " response
+	case "$response" in
+		[Yy]|[Yy][Ee][Ss])
+			true
+			;;
+		*)
+			false
+			;;
+		esac
+}
+
+repo-clean() {
+	if [ -z "$1" -o "$1" != "-f" ]; then
+		user_confirm "Reset all branches and discard all changes?" || return
+	fi
+
+	repo sync -d || ( repo forall -c 'git rebase --abort' ; repo sync -d )
+	repo forall -c 'git reset --hard ; git clean -fdx || echo "$REPO_PROJECT failed to clean"'
+}
+
