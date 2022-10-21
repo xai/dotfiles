@@ -83,5 +83,6 @@ repo-clean() {
 
 	repo sync -d || ( repo forall -c 'git rebase --abort' ; repo sync -d )
 	repo forall -c 'git reset --hard ; git clean -fdx || echo "$REPO_PROJECT failed to clean"'
+	repo abandon --all
 }
 
