@@ -1,5 +1,5 @@
 alias mutt="LC_ALL=en_US.UTF-8 neomutt"
-alias vim=nvim
+# alias vim=nvim
 alias kernlog='clear && journalctl -k -f'
 alias synclog='clear && journalctl --user -u mbsync.service -f'
 alias tasksync='clear && task sync && task'
