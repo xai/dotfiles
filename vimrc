@@ -18,6 +18,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-sleuth'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -72,17 +73,6 @@ let mapleader = " "
 let g:username='Olaf Lessenich'
 let g:email='xai@linux.com'
 
-" indenation
-set autoindent
-set smartindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-autocmd FileType java,c,cpp,groovy set expandtab
-
-" PEP8 compliant indenting
-au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
-
 " Save buffer automatically
 " autocmd FileType java,python let auto_save = 1
 
@@ -116,6 +106,7 @@ nnoremap <C-p> :find *
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
 "let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#eclim#enabled = 1

@@ -1,6 +1,18 @@
 {
-    "editor.fontSize": 12,
-    "editor.rulers": [80],
-    "workbench.colorTheme": "Solarized Dark",
-    "latex-workshop.chktex.enabled": true
+	"telemetry.telemetryLevel": "off",
+	"editor.fontFamily": "'FiraCode Nerd Font', 'Fira Code', 'monospace', monospace",
+	"editor.fontLigatures": false,
+	"editor.rulers": [
+		80,
+		120
+	],
+	"editor.wordWrap": "off",
+	"editor.minimap.enabled": false,
+	"workbench.colorTheme": "Solarized Dark",
+	"gitlens.currentLine.enabled": false,
+	"gitlens.codeLens.enabled": false,
+	"explorer.compactFolders": false,
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 }
