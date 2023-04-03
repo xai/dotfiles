@@ -26,6 +26,8 @@ function mux() {
 	else
 		if [ "$1" == "console" -o "$1" == "vim" ]; then
 			tmux -L console -f ~/.tmux-alternative.conf a -t $1 || tmux -L console -f ~/.tmux-alternative.conf new -s $1
+		elif [[ "$1" == vscode* || "$1" == vscode* ]]; then
+			tmux -L vscode -f ~/.tmux.light.conf a -t $1 || tmux -L vscode -f ~/.tmux.light.conf new -s $1
 		else
 			tmux a -t $1 || tmux new -s $1
 		fi

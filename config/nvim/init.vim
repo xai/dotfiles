@@ -5,9 +5,9 @@ set number
 set enc=utf-8
 set fillchars=vert:\│
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 filetype off
-call vundle#rc()
+call vundle#rc("~/.config/nvim/bundle")
 
 "
 " Features
@@ -22,34 +22,19 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'aperezdc/vim-template'
-"Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'itchyny/thumbnail.vim'
-"Plugin 'jalvesaq/Nvim-R'
 Plugin 'jamessan/vim-gnupg'
-"Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-"Plugin 'kien/ctrlp.vim'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
-"Plugin 'scrooloose/nerdcommenter.git'
-"Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic'
-"Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
-Plugin 'ycm-core/YouCompleteMe'
+"Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'masukomi/vim-markdown-folding'
-"Plugin 'junegunn/fzf'
-"Plugin 'neomake/neomake'
-"Plugin 'Shougo/deoplete.nvim'
-"Plugin 'tpope/vim-dispatch'
-"Plugin 'vim-scripts/vim-auto-save'
-"Plugin 'vim-scripts/vimwiki'
-"Plugin 'mreppen/vim-scholar'
 Plugin 'voldikss/vim-translator'
 Plugin 'xai/vim-scholar'
 Plugin 'sainnhe/gruvbox-material'
@@ -64,15 +49,12 @@ Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'sheerun/vim-wombat-scheme'
+Plugin 'EdenEast/nightfox.nvim'
 
 filetype plugin indent on
 
 " define leader key
 let mapleader = " "
-
-" Setup for vim-template
-let g:username='Olaf Lessenich'
-let g:email='xai@linux.com'
 
 " Save buffer automatically
 " autocmd FileType java,python let auto_save = 1
@@ -107,7 +89,6 @@ nnoremap <C-p> :find *
 au BufNewFile,BufRead *.gradle set filetype=groovy
 
 "let g:airline_theme='powerlineish'
-let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#eclim#enabled = 1
@@ -353,22 +334,6 @@ let g:translator_target_lang = 'en'
 " nested folding for markdown
 autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
 
-" Add support for markdown files in tagbar.
-let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : '~/bin/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '»',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
-"
 " vim wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
