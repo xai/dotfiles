@@ -64,6 +64,7 @@ Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'sheerun/vim-wombat-scheme'
+Plugin 'EdenEast/nightfox.nvim'
 
 filetype plugin indent on
 
@@ -371,5 +372,6 @@ let g:tagbar_type_markdown = {
 "
 " vim wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)\(.md\)\='
 
 set directory^=$HOME/.vim/tmp//
