@@ -25,9 +25,17 @@ function mux() {
 		tmux a || tmux
 	else
 		if [ "$1" == "console" -o "$1" == "vim" ]; then
-			tmux -L console -f ~/.tmux-alternative.conf a -t $1 || tmux -L console -f ~/.tmux-alternative.conf new -s $1
-		elif [[ "$1" == vscode* || "$1" == vscode* ]]; then
-			tmux -L vscode -f ~/.tmux.light.conf a -t $1 || tmux -L vscode -f ~/.tmux.light.conf new -s $1
+			sessionname=$1
+			if [ -n "$2" ]; then
+				sessionname=$2
+			fi
+			tmux -L console -f ~/.tmux-alternative.conf a -t $sessionname || tmux -L console -f ~/.tmux-alternative.conf new -s $sessionname
+		elif [[ "$1" == "vscode" ]]; then
+			if [ -z "$2" ]; then
+				echo "Usage: mux vscode <session>"
+				return 1
+			fi
+			tmux -L vscode -f ~/.tmux.light.conf a -t $2 || tmux -L vscode -f ~/.tmux.light.conf new -s $2
 		else
 			tmux a -t $1 || tmux new -s $1
 		fi

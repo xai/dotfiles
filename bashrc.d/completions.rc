@@ -1,0 +1,14 @@
+_mux() {
+	local cur=${COMP_WORDS[COMP_CWORD]}
+	if [[ "$COMP_CWORD" == 1 ]]; then
+		COMPREPLY=( $((tmux list-sessions -F '#{session_name}'; echo -e "vscode\nconsole") | grep -i "$cur") )
+	else
+		_command_offset "$((i + 1))"
+		if [ "${COMP_WORDS[0]}" = "console" ]; then
+			COMPREPLY=( $(tmux -L console -f ~/.tmux-alternative.conf list-sessions -F '#{session_name}' | grep -i "$cur") )
+		elif [ "${COMP_WORDS[0]}" = "vscode" ]; then
+			COMPREPLY=( $(tmux -L vscode -f ~/.tmux.light.conf list-sessions -F '#{session_name}' | grep -i "$cur") )
+		fi
+	fi
+}
+complete -F _mux mux
