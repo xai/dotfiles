@@ -43,12 +43,11 @@ Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'masukomi/vim-markdown-folding'
-"Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf'
 "Plugin 'neomake/neomake'
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vim-auto-save'
-"Plugin 'vim-scripts/vimwiki'
 "Plugin 'mreppen/vim-scholar'
 Plugin 'voldikss/vim-translator'
 Plugin 'xai/vim-scholar'
@@ -102,7 +101,8 @@ set path+=**
 " Show file options above the command line
 set wildmenu
 
-nnoremap <C-p> :find *
+" nnoremap <C-p> :find *
+nnoremap <C-p> :FZF<CR>
 
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
