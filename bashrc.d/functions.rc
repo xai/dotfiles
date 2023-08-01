@@ -36,6 +36,12 @@ function mux() {
 				return 1
 			fi
 			tmux -L vscode -f ~/.tmux.light.conf a -t $2 || tmux -L vscode -f ~/.tmux.light.conf new -s $2
+		elif [[ "$1" == "inner" ]]; then
+			if [ -z "$2" ]; then
+				echo "Usage: mux inner <session>"
+				return 1
+			fi
+			tmux -L inner -f ~/.tmux.inner.conf a -t $2 || tmux -L inner -f ~/.tmux.inner.conf new -s $2
 		else
 			tmux a -t $1 || tmux new -s $1
 		fi
@@ -105,9 +111,56 @@ repo-clean() {
 		user_confirm "Reset all branches and discard all changes?" || return
 	fi
 
-	git reset --hard
+	git reset --hard HEAD
 	repo sync -d || ( repo forall -i 'product-cube' -c 'git rebase --abort' ; repo sync -d )
-	repo forall -i 'product-cube' -c 'git reset --hard ; git clean -fdx || echo "$REPO_PROJECT failed to clean"'
+	repo forall -i 'product-cube' -c 'git checkout . ; git reset --hard HEAD ; git clean -fdx || echo "$REPO_PROJECT failed to clean"'
 	repo abandon --all
+}
+
+find-and-update-git-repos() {
+	location="$1"
+	if [ -z "$location" ]; then
+		location="."
+	fi
+	find $location -type d -name .git -exec dirname {} \; | while read -r repo; do pushd .; echo "Updating $repo"; cd $repo; git remote update; popd; done
+}
+
+gwip() {
+	git commit --no-verify -m "WIP: Do not merge!"
+}
+
+wip() {
+	# Usage: wip
+	# show a git status, asks whether to add and commit all (with --no-verify -m 'WIP: Do not merge!')
+	git status || (echo "No git repository" && return 1)
+	echo
+	user_confirm "Add and commit all changes?" || return
+	git add -u && gwip
+}
+
+vimgitshow() { git show "$1" | nvim - "+set filetype=${1##*.}"; }
+
+operatorlog() {
+	if [ -n "$1" ]; then
+		podname="$(kubectl get pods -n theiacloud | grep operator-deployment | cut -d ' ' -f1 | sed ${1}q\;d)"
+	else
+		podname="$(kubectl get pods -n theiacloud | grep operator-deployment | cut -d ' ' -f1)"
+	fi
+	if [ -n "$podname" ]; then
+		echo "Logs for $podname"
+		kubectl logs ${podname} -n theiacloud -f
+	fi
+}
+
+servicelog() {
+	if [ -n "$1" ]; then
+		podname="$(kubectl get pods -n theiacloud | grep service-deployment | cut -d ' ' -f1 | sed ${1}q\;d)"
+	else
+		podname="$(kubectl get pods -n theiacloud | grep service-deployment | cut -d ' ' -f1)"
+	fi
+	if [ -n "$podname" ]; then
+		echo "Logs for $podname"
+		kubectl logs ${podname} -n theiacloud -f
+	fi
 }
 
