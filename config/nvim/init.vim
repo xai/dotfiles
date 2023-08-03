@@ -22,24 +22,42 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'aperezdc/vim-template'
+"Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'itchyny/thumbnail.vim'
+"Plugin 'jalvesaq/Nvim-R'
 Plugin 'jamessan/vim-gnupg'
+"Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+"Plugin 'kien/ctrlp.vim'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
+"Plugin 'scrooloose/nerdcommenter.git'
+"Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic'
+"Plugin 'szw/vim-dict'
 Plugin 'tfnico/vim-gradle'
-"Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/CmdlineComplete'
 Plugin 'vim-scripts/git_patch_tags.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'masukomi/vim-markdown-folding'
+Plugin 'junegunn/fzf'
+"Plugin 'neomake/neomake'
+"Plugin 'tpope/vim-dispatch'
+"Plugin 'vim-scripts/vim-auto-save'
+"Plugin 'mreppen/vim-scholar'
 Plugin 'voldikss/vim-translator'
 Plugin 'xai/vim-scholar'
 Plugin 'sainnhe/gruvbox-material'
 Plugin 'psf/black'
+Plugin 'github/copilot.vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'zivyangll/git-blame.vim'
+Plugin 'f-person/git-blame.nvim'
+Plugin 'neovim/nvim-lspconfig'
 
 "
 " Colorschemes
@@ -55,6 +73,10 @@ filetype plugin indent on
 
 " define leader key
 let mapleader = " "
+
+" Setup for vim-template
+let g:username='Olaf Lessenich'
+let g:email='xai@linux.com'
 
 " Save buffer automatically
 " autocmd FileType java,python let auto_save = 1
@@ -83,7 +105,8 @@ set path+=**
 " Show file options above the command line
 set wildmenu
 
-nnoremap <C-p> :find *
+" nnoremap <C-p> :find *
+nnoremap <C-p> :FZF<CR>
 
 " gradle syntax highlighting
 au BufNewFile,BufRead *.gradle set filetype=groovy
@@ -102,17 +125,16 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 set t_Co=256
 
-"let g:EclimProjectTreeAutoOpen=1
-"let g:EclimJavaSearchSingleResult='tabnew'
-
 " for YCM
-"let g:EclimCompletionMethod = 'omnifunc'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 ""Do not ask when starting vim
 "let g:ycm_confirm_extra_conf = 0
 "let g:ycm_collect_identifiers_from_tags_files = 1
 "let g:ycm_autoclose_preview_window_after_completion=1
 "set tags+=./.tags
+
+" auto completion
+" let g:deoplete#enable_at_startup = 1
 
 " gnupg
 "let g:GPGExecutable = 'gpg2'
@@ -230,6 +252,9 @@ nnoremap <Leader>ur :Unite file_rec<CR>
 nnoremap <Leader>uf :Unite file<CR>
 nnoremap <Leader>ub :Unite buffer<CR>
 
+" git-blame
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+
 " eclim
 " autocmd FileType java nnoremap <Leader>g :JavaSearchContext<CR>
 " autocmd FileType java nnoremap <Leader>c :JavaCallHierarchy<CR>
@@ -340,5 +365,71 @@ let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)\(.md\)\='
 
 " unmap tab key from vim wiki
 au filetype vimwiki silent! iunmap <buffer> <Tab>
+
+" -------------------- LSP ---------------------------------
+:lua << EOF
+
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+require'lspconfig'.grammarly.setup{filetypes = {'markdown', 'text', 'tex', 'gitcommit'}, autostart = false}
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+EOF
+
+" Copilot
+let g:copilot_filetypes = {
+			\ '*': v:false,
+			\ 'gitcommit': v:true,
+			\ 'vimwiki': v:true
+			\ }
+
+" Toggle copilot for buffer
+nnoremap <leader>cp :call ToggleCopilot()<CR>
+function! ToggleCopilot()
+	if (!exists("b:copilot_enabled") || (b:copilot_enabled == v:false))
+		let b:copilot_enabled = v:true
+		echo "Copilot enabled"
+	else
+		let b:copilot_enabled = v:false
+		echo "Copilot disabled"
+	endif
+endfunction
 
 set directory^=$HOME/.vim/tmp//
