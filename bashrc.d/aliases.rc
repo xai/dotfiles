@@ -8,3 +8,11 @@ alias git-slog='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 alias keeper="echo !! >> ~/keeper.txt"
 alias fix-fn-keys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias sortversion="sort -t '.' -n -k 1,1 -k 2,2 -k 3,3"
+alias gitresetdate='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
+alias gaamend="git add -u && git commit --no-verify --amend"
+alias gAamend="git add -A && git commit --no-verify --amend"
+alias gamend="git commit --no-verify --amend"
+alias gac="git commit -m Autocommit"
+alias fix='nvim -p +/HEAD `git diff --name-only --diff-filter=U | uniq`'
+alias nviml='nvim -c "colorscheme lucius" -c LuciusWhite'
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
