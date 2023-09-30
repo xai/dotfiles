@@ -57,6 +57,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # lock screen
 bindsym $mod+x exec ~/bin/xlock
 
+# toggle touch pad
+bindsym $mod+t exec ~/bin/touch_toggle
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
