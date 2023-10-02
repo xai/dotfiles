@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#xrandr --output DP-3-1 --auto --right-of DP-3-3 --output DP-3-3 --auto --output eDP-1 --off
+
+# Usage: myxrandr [work|home|laptop]
+
+OPTIONS=""
+DPI="100"
+if [ "$1" == "work" ]; then
+    OPTIONS="--output DP-3-1 --auto --right-of DP-3-3 --output DP-3-3 --auto --output eDP-1 --off"
+elif [ "$1" == "home" ]; then
+    OPTIONS="--output DP-3-1 --auto --right-of DP-3-3 --output DP-3-3 --auto --output eDP-1 --off"
+elif [ "$1" == "laptop" ]; then
+    OPTIONS="--output eDP-1 --auto"
+    DPI="220"
+else
+    echo "Usage: myxrandr [work|home|laptop]"
+fi
+
+xrandr $OPTIONS
+sed -i "s/Xft.dpi: [0-9]*/Xft.dpi: $DPI/" ~/.Xresources
+xrdb -merge ~/.Xresources

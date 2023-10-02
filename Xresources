@@ -1,3 +1,41 @@
+Xft.dpi: 100
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! scroll in pager instead of terminal
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+!URxvt extensions:
+!URxvt.perl-ext-common: default,tabbedex
+!URxvt.perl-ext: default,tabbedex
+
+!URxvt scrolling options and cursor style:
+URxvt*saveLines: 12000
+URxvt*scrollstyle:plain
+URxvt*scrollBar: false
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+!URxvt.internalBorder: 5
+
+!URxvt tabs settings:
+URxvt.tabbed*.autohide:  yes
+URxvt.tabbed*.title:  false
+URxvt.tabbed.tabbar-fg: -2
+URxvt.tabbed.tabbar-bg: -1
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: -1
+
+URxvt.font: xft:FiraCode\ Nerd\ Font:size=11
+!URxvt.letterSpace: -1
+
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -54,40 +92,3 @@ URxvt*color14:               S_base1
 !! white dark/light
 URxvt*color7:                S_base2
 URxvt*color15:               S_base3
-
-!URxvt fonts:
-URxvt*font: xft:Fantasque Sans Mono:size=10, xft:terminus:size=10, xft:Dejavu Sans Mono:size=10, xft:Sans:size=10, xft:Fixed:size=10
-
-!URxvt extensions:
-URxvt.perl-ext-common: default,tabbedex
-URxvt.perl-ext: default,tabbedex
-
-!URxvt scrolling options and cursor style:
-URxvt*saveLines: 12000
-URxvt*scrollstyle:plain
-URxvt*scrollBar: false
-URxvt*cursorBlink: true
-URxvt*cursorUnderline: true
-!URxvt.internalBorder: 5
-
-!URxvt tabs settings:
-URxvt.tabbed*.autohide:  yes
-URxvt.tabbed*.title:  false
-URxvt.tabbed.tabbar-fg: -2
-URxvt.tabbed.tabbar-bg: -1
-URxvt.tabbed.tab-fg: 3
-URxvt.tabbed.tab-bg: -1
-
-!URxvt tabbedex keybindings
-URxvt.keysym.Meta-Control-1: perl:tabbedex:goto_tab_1
-URxvt.keysym.Meta-Control-2: perl:tabbedex:goto_tab_2
-URxvt.keysym.Meta-Control-3: perl:tabbedex:goto_tab_3
-URxvt.keysym.Meta-Control-4: perl:tabbedex:goto_tab_4
-URxvt.keysym.Meta-Control-5: perl:tabbedex:goto_tab_5
-URxvt.keysym.Meta-Control-6: perl:tabbedex:goto_tab_6
-URxvt.keysym.Meta-Control-7: perl:tabbedex:goto_tab_7
-URxvt.keysym.Meta-Control-8: perl:tabbedex:goto_tab_8
-URxvt.keysym.Meta-Control-9: perl:tabbedex:goto_tab_9
-URxvt.keysym.Meta-Control-0: perl:tabbedex:goto_tab_10
-
-URxvt.iconFile: /usr/share/icons/gnome/256x256/apps/terminal.png
