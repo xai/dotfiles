@@ -104,11 +104,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+minus split h
-
-# split in vertical orientation
-bindsym $mod+Shift+backslash split v
+# splits
+bindsym $mod+minus split v
+bindsym $mod+Shift+backslash split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -222,6 +220,7 @@ bar {
         position top
 
         # status_command i3status
+        # status_command i3blocks
         status_command i3status | ~/bin/myi3status.py
 
         colors {
