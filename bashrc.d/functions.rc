@@ -1,4 +1,4 @@
-expandurl() { curl -sIL -m 1 $1 2>&1 | awk '/^location/ {print $2}' | tail -n1; }
+function expandurl() { curl -sIL -m 1 $1 2>&1 | awk '/^location/ {print $2}' | tail -n1; }
 
 function certchain() {
 	# Usage: certchain
@@ -48,7 +48,7 @@ function mux() {
 	fi
 }
 
-fixssh() {
+function fixssh() {
 	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
 		if (tmux show-environment | grep "^${key}" > /dev/null); then
 			value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
@@ -57,34 +57,34 @@ fixssh() {
 	done
 }
 
-function pretty_csv {
+function pretty_csv() {
 	column -t -s';' | less -F -S -X -K
 }
 
-function csv_cols {
+function csv_cols() {
 	head -n1 | tr ';' '\n' | cat -n
 }
 
-function pp_history {
+function pp_history() {
 	paste -sd '#\n' ~/.bash_eternal_history | awk -F"#" '{d=$2 ; $2="";print strftime("%Y-%m-%d %T",d)" "$0}'
 }
 
-function spellcheck {
+function spellcheck() {
 	java -jar $HOME/Downloads/software/LanguageTool-4.9-SNAPSHOT/languagetool-commandline.jar -l en-US $1
 }
 
-bib2unix () { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
-unix2bib () { tr -d "\n" | tr "\0" "\n"; }
+function bib2unix() { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
+function unix2bib() { tr -d "\n" | tr "\0" "\n"; }
 
-resolve_redirect () { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
+function resolve_redirect() { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
 
-ggb() { git grep -n "$@" | while IFS=: read i j k; do git blame -f -L $j,$j $i; done }
+function ggb() { git grep -n "$@" | while IFS=: read i j k; do git blame -f -L $j,$j $i; done }
 
-getlast() {
+function getlast() {
     fc -ln "$1" "$1" | sed '1s/^[[:space:]]*//'
 }
 
-rememberthis() {
+function rememberthis() {
 	LOGBOOK=~/LOGBOOK
 	if [ -n "$1" ]; then
 		echo "# $@" >> $LOGBOOK
@@ -94,7 +94,7 @@ rememberthis() {
 	echo >> $LOGBOOK
 }
 
-user_confirm() {
+function user_confirm() {
 	read -r -p "${1:-Are you sure? [y/N]} " response
 	case "$response" in
 		[Yy]|[Yy][Ee][Ss])
@@ -105,62 +105,3 @@ user_confirm() {
 			;;
 		esac
 }
-
-repo-clean() {
-	if [ -z "$1" -o "$1" != "-f" ]; then
-		user_confirm "Reset all branches and discard all changes?" || return
-	fi
-
-	git reset --hard HEAD
-	repo sync -d || ( repo forall -i 'product-cube' -c 'git rebase --abort' ; repo sync -d )
-	repo forall -i 'product-cube' -c 'git checkout . ; git reset --hard HEAD ; git clean -fdx || echo "$REPO_PROJECT failed to clean"'
-	repo abandon --all
-}
-
-find-and-update-git-repos() {
-	location="$1"
-	if [ -z "$location" ]; then
-		location="."
-	fi
-	find $location -type d -name .git -exec dirname {} \; | while read -r repo; do pushd .; echo "Updating $repo"; cd $repo; git remote update; popd; done
-}
-
-gwip() {
-	git commit --no-verify -m "WIP: Do not merge!"
-}
-
-wip() {
-	# Usage: wip
-	# show a git status, asks whether to add and commit all (with --no-verify -m 'WIP: Do not merge!')
-	git status || (echo "No git repository" && return 1)
-	echo
-	user_confirm "Add and commit all changes?" || return
-	git add -u && gwip
-}
-
-vimgitshow() { git show "$1" | nvim - "+set filetype=${1##*.}"; }
-
-operatorlog() {
-	if [ -n "$1" ]; then
-		podname="$(kubectl get pods -n theiacloud | grep operator-deployment | cut -d ' ' -f1 | sed ${1}q\;d)"
-	else
-		podname="$(kubectl get pods -n theiacloud | grep operator-deployment | cut -d ' ' -f1)"
-	fi
-	if [ -n "$podname" ]; then
-		echo "Logs for $podname"
-		kubectl logs ${podname} -n theiacloud -f
-	fi
-}
-
-servicelog() {
-	if [ -n "$1" ]; then
-		podname="$(kubectl get pods -n theiacloud | grep service-deployment | cut -d ' ' -f1 | sed ${1}q\;d)"
-	else
-		podname="$(kubectl get pods -n theiacloud | grep service-deployment | cut -d ' ' -f1)"
-	fi
-	if [ -n "$podname" ]; then
-		echo "Logs for $podname"
-		kubectl logs ${podname} -n theiacloud -f
-	fi
-}
-
