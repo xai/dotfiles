@@ -27,6 +27,7 @@
 import sys
 import json
 import subprocess
+import os
 
 
 def get_governor():
@@ -43,6 +44,27 @@ def get_current_hamster_activity():
         activity = " ".join(activity.split(" ")[2:])
         color = "#0AA8A7"
     return activity, color
+
+
+def get_online_status():
+    # executable = os.path.join(os.environ['HOME'], 'bin/onlinestatus')
+    # result = subprocess.run([executable, "1.1.1.1"], stdout=subprocess.PIPE)
+    # status = result.stdout.decode("utf-8").strip()
+    file_path = os.path.expanduser("~/.onlinestatus.now")
+    with open(file_path, "r") as f:
+        pingresult = f.read().strip()
+        color = "#900000"
+        if pingresult == '':
+            status = "Offline"
+            return status, color
+
+        status = pingresult + " ms"
+        latency = float(pingresult)
+        if latency < 200:
+            color = "#0AA8A7"
+        else:
+            color = "#FFFF00"
+        return status, color
 
 
 def get_public_ip():
@@ -85,6 +107,8 @@ if __name__ == "__main__":
         j = json.loads(line)
         # insert information into the start of the json, but could be anywhere
         # CHANGE THIS LINE TO INSERT SOMETHING ELSE
+        status, color = get_online_status()
+        j.insert(0, {"full_text": "%s" % status, "name": "onlinestatus", "color": color})
         activity, color = get_current_hamster_activity()
         j.insert(0, {"full_text": "%s" % activity, "name": "hamster", "color": color})
         # and echo back new encoded json
