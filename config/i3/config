@@ -238,3 +238,6 @@ bar {
                 binding_mode       #2F343A #900000 #FFFFFF
         }
 }
+
+# hacks
+for_window [floating_from="auto" title=" is sharing your screen.$"] border none, sticky enable, move position 0 px -55 px
