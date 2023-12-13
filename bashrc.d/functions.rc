@@ -29,7 +29,7 @@ function mux() {
 			if [ -n "$2" ]; then
 				sessionname=$2
 			fi
-			tmux -L console -f ~/.tmux-alternative.conf a -t $sessionname || tmux -L console -f ~/.tmux-alternative.conf new -s $sessionname
+			tmux -L console -f ~/.tmux.console.conf a -t $sessionname || tmux -L console -f ~/.tmux.console.conf new -s $sessionname
 		elif [[ "$1" == "vscode" ]]; then
 			if [ -z "$2" ]; then
 				echo "Usage: mux vscode <session>"
