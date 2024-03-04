@@ -1,6 +1,8 @@
-function expandurl() { curl -sIL -m 1 $1 2>&1 | awk '/^location/ {print $2}' | tail -n1; }
+#!/bin/bash
 
-function certchain() {
+function expandurl { curl -sIL -m 1 $1 2>&1 | awk '/^location/ {print $2}' | tail -n1; }
+
+function certchain {
 	# Usage: certchain
     # Display PKI chain-of-trust for a given domain
     # GistID: https://gist.github.com/joshenders/cda916797665de69ebcd
@@ -20,7 +22,7 @@ function certchain() {
         | grep -E '\ (s|i):'
 }
 
-function mux() {
+function mux {
 	if [ -z "$1" ]; then
 		tmux a || tmux
 	else
@@ -48,7 +50,7 @@ function mux() {
 	fi
 }
 
-function fixssh() {
+function fixssh {
 	for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
 		if (tmux show-environment | grep "^${key}" > /dev/null); then
 			value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
@@ -73,35 +75,47 @@ function spellcheck() {
 	java -jar $HOME/Downloads/software/LanguageTool-4.9-SNAPSHOT/languagetool-commandline.jar -l en-US $1
 }
 
-function bib2unix() { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
-function unix2bib() { tr -d "\n" | tr "\0" "\n"; }
+function bib2unix { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
+function unix2bib { tr -d "\n" | tr "\0" "\n"; }
 
-function resolve_redirect() { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
+# function resolve_redirect { curl -ILs -o /dev/null -w %{url_effective} "$1"; echo; }
 
-function ggb() { git grep -n "$@" | while IFS=: read i j k; do git blame -f -L $j,$j $i; done }
-
-function getlast() {
-    fc -ln "$1" "$1" | sed '1s/^[[:space:]]*//'
-}
-
-function rememberthis() {
-	LOGBOOK=~/LOGBOOK
-	if [ -n "$1" ]; then
-		echo "# $@" >> $LOGBOOK
-	fi
-	date '+%y-%m-%d %H:%M:%S' >> $LOGBOOK
-    getlast >> $LOGBOOK
-	echo >> $LOGBOOK
-}
-
-function user_confirm() {
-	read -r -p "${1:-Are you sure? [y/N]} " response
-	case "$response" in
-		[Yy]|[Yy][Ee][Ss])
-			true
-			;;
-		*)
-			false
-			;;
-		esac
-}
+# function ggb { git grep -n "$@" | while IFS=: read i j k; do git blame -f -L $j,$j $i; done }
+# 
+# function getlast() {
+#     fc -ln "$1" "$1" | sed '1s/^[[:space:]]*//'
+# }
+# 
+# function rememberthis {
+# 	LOGBOOK=~/LOGBOOK
+# 	if [ -n "$1" ]; then
+# 		echo "# $@" >> $LOGBOOK
+# 	fi
+# 	date '+%y-%m-%d %H:%M:%S' >> $LOGBOOK
+#     getlast >> $LOGBOOK
+# 	echo >> $LOGBOOK
+# }
+# 
+# function user_confirm {
+# 	read -r -p "${1:-Are you sure? [y/N]} " response
+# 	case "$response" in
+# 		[Yy]|[Yy][Ee][Ss])
+# 			true
+# 			;;
+# 		*)
+# 			false
+# 			;;
+# 		esac
+# }
+# 
+# function repo-clean {
+# 	if [ -z "$1" -o "$1" != "-f" ]; then
+# 		user_confirm "Reset all branches and discard all changes?" || return
+# 	fi
+# 
+# 	git reset --hard
+# 	repo sync -d || ( repo forall -i 'product-cube' -c 'git rebase --abort' ; repo sync -d )
+# 	repo forall -i 'product-cube' -c 'git reset --hard ; git clean -fdx || echo "$REPO_PROJECT failed to clean"'
+# 	repo abandon --all
+# }
+# 
