@@ -24,9 +24,6 @@ if [ -d ~/.bashrc.d ]; then
 	done
 fi
 
-# rust
-. "$HOME/.cargo/env"
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
