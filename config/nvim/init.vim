@@ -23,7 +23,7 @@ runtime config/misc.vim
 "" Plugin-related configs
 runtime config/airline.vim  " fancy status line
 runtime config/git.vim      " git or fugitive related
-runtime config/ctrlp.vim    " fuzzy search files
+runtime config/fzf.vim    " fuzzy search files
 runtime config/coc.vim      " nodejs extension host
 runtime config/nvimtree.vim " explorer-like file tree
 

@@ -7,7 +7,8 @@ Plugin 'vim-airline/vim-airline-themes'
 
 """ Development
 Plugin 'neoclide/coc.nvim', {'pinned': 1}
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'nvim-tree/nvim-tree.lua'
 
 """ Documentation
