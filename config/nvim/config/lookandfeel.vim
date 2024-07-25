@@ -1,7 +1,7 @@
 """ Look and feel
-set notermguicolors
+set termguicolors
 set background=dark
-colorscheme solarized
+colorscheme solarized8
 syntax on
 set signcolumn
 set number

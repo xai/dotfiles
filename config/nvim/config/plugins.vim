@@ -16,9 +16,14 @@ Plugin 'vimwiki/vimwiki'
 """ Utils
 Plugin 'jamessan/vim-gnupg'
 
+""" AI stuff
+Plugin 'github/copilot.vim'
+
 """ Colorschemes
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'lifepillar/vim-solarized8', {'pinned': 1}
 Plugin 'sheerun/vim-wombat-scheme'
 Plugin 'EdenEast/nightfox.nvim'
 Plugin 'vim-scripts/Lucius'
+Plugin 'mhartington/oceanic-next'
 
