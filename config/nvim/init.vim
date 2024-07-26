@@ -31,3 +31,5 @@ runtime config/nvimtree.vim " explorer-like file tree
 runtime config/vimwiki.vim
 runtime config/gnupg.vim
 
+"" AI stuff, disabled globally in config below
+runtime config/copilot.vim  " github copilot
