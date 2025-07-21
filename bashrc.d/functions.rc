@@ -75,6 +75,20 @@ function spellcheck() {
 	java -jar $HOME/Downloads/software/LanguageTool-4.9-SNAPSHOT/languagetool-commandline.jar -l en-US $1
 }
 
+function load_theme() {
+    themedir=$HOME/.config/kitty/themes
+
+    theme=${1}
+    if [[ ! $theme == *.conf ]]; then
+        theme=${theme}.conf
+    fi
+
+    if [ ! -f ${themedir}/$theme ]; then
+        theme=$(ls ${themedir} | fzf)
+    fi
+    echo kitty @ set-colors -a ${themedir}/$theme
+}
+
 function bib2unix { if [ $# -gt 0 ]; then cat "$@"; else cat; fi | tr "@\n" "\n\0" | sed "2,\$s/^/@/"; }
 function unix2bib { tr -d "\n" | tr "\0" "\n"; }
 
