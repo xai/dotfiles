@@ -38,11 +38,17 @@ for_window [app_id="dropdown-terminal"] floating enable, sticky enable, resize s
 # ssh agent with fixed socket
 exec --no-startup-id ssh-agent -a /run/user/2001/openssh_agent
 
+# Set SSH_AUTH_SOCK environment and import for systemd services
+exec systemctl --user set-environment SSH_AUTH_SOCK=/run/user/2001/openssh_agent
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SSH_AUTH_SOCK
+
 # background color
 output * bg #010409 solid_color
 
 # playerctld for managing played media with media keys
 exec --no-startup-id playerctld daemon
+
+exec dunst
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
