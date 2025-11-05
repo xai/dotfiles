@@ -1,0 +1,15 @@
+#!/bin/sh
+device=$(swaymsg -t get_inputs | jq -r '.[] | select(.type=="touchpad") | .identifier' | head -1)
+if [ -z "$device" ]; then
+    echo "No touchpad found"
+    exit 1
+fi
+
+enabled=$(swaymsg -t get_inputs | jq -r ".[] | select(.identifier==\"$device\") | .libinput.send_events")
+if [ "$enabled" = "enabled" ]; then
+    swaymsg input "$device" events disabled
+    echo "Touchpad disabled"
+else
+    swaymsg input "$device" events enabled
+    echo "Touchpad enabled"
+fi

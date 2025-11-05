@@ -1,0 +1,7 @@
+#!/bin/sh
+if command -v hamster &> /dev/null
+then
+	hamster stop
+fi
+
+swaylock -f -c 1E262C

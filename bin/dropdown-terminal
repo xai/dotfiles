@@ -1,0 +1,16 @@
+#!/bin/sh
+# Toggle dropdown terminal - show if hidden, hide if visible, create if doesn't exist
+
+if pgrep -f "kitty.*dropdown-terminal" > /dev/null; then
+    # Terminal exists, check if visible
+    if swaymsg '[app_id="dropdown-terminal"]' scratchpad show 2>/dev/null; then
+        # Was in scratchpad, now visible
+        exit 0
+    else
+        # Was visible, hide it
+        swaymsg '[app_id="dropdown-terminal"]' move scratchpad
+    fi
+else
+    # Terminal doesn't exist, create it
+    kitty --class=dropdown-terminal &
+fi
