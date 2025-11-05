@@ -218,32 +218,30 @@ client.placeholder      #161b22 #0C0C0C #FFFFFF #161b22   #0C0C0C
 
 client.background       #FFFFFF
 
-# Use waybar instead of swaybar for better Wayland support
-exec_always --no-startup-id waybar
+# Temporarily use swaybar instead of waybar
+# exec_always --no-startup-id waybar
 
-# Commented out swaybar - using waybar instead
-# bar {
-#         position top
-# 
-#         tray_output primary
-# 
-#         # status_command i3status
-#         # status_command i3blocks  
-#         status_command i3status #| ~/bin/myi3status.py
-# 
-#         colors {
-# 
-#                 background #161b22
-#                 statusline #FFFFFF
-#                 separator  #808080
-# 
-#                 focused_workspace  #065F5F #065F5F #FFFFFF
-#                 active_workspace   #333333 #222222 #FFFFFF
-#                 inactive_workspace #333333 #222222 #888888
-#                 urgent_workspace   #2F343A #900000 #FFFFFF
-#                 binding_mode       #2F343A #900000 #FFFFFF
-#         }
-# }
+# Using swaybar for now
+bar {
+        position top
+
+        tray_output *
+
+        status_command i3status
+
+        colors {
+
+                background #161b22
+                statusline #FFFFFF
+                separator  #808080
+
+                focused_workspace  #065F5F #065F5F #FFFFFF
+                active_workspace   #333333 #222222 #FFFFFF
+                inactive_workspace #333333 #222222 #888888
+                urgent_workspace   #2F343A #900000 #FFFFFF
+                binding_mode       #2F343A #900000 #FFFFFF
+        }
+}
 
 # Screenshot bindings
 bindsym Print exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
