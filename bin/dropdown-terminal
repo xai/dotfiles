@@ -12,5 +12,5 @@ if pgrep -f "kitty.*dropdown-terminal" > /dev/null; then
     fi
 else
     # Terminal doesn't exist, create it
-    kitty --class=dropdown-terminal &
+    kitty --class=dropdown-terminal --override include=~/.config/kitty/wombat-theme.conf &
 fi

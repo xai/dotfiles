@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Toggle wlsunset (nightlight) on/off
+
+if pgrep -x wlsunset > /dev/null; then
+    # wlsunset is running, kill it
+    pkill -x wlsunset
+    notify-send "Night Light" "Disabled" -t 2000
+else
+    # wlsunset is not running, start it
+    # Default temperature: 4500K (night) to 6500K (day)
+    # Adjust -l and -L with your latitude/longitude for automatic scheduling
+    # Or just use manual temperature with -t and -T
+    wlsunset -t 4500 -T 6500 &
+    notify-send "Night Light" "Enabled" -t 2000
+fi

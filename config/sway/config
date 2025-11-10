@@ -79,6 +79,9 @@ bindsym $mod+x exec ~/bin/swaylock
 # toggle touch pad
 bindsym $mod+t exec ~/bin/sway_touch_toggle
 
+# toggle nightlight
+bindsym $mod+n exec ~/bin/nightlight-toggle
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
